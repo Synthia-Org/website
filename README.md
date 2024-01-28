@@ -14,5 +14,5 @@ npm install
 
 **Step 3:** Run the server
 ```
-node index.js
+npm start
 ```

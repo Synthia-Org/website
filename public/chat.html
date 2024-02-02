@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat</title>
+	<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/chat.js" defer></script>
+</head>
+
+<body>
+	<h1>Welcome to Synthia Chat</h1>
+	<p>Try saying "hi"</p>
+
+    <div id="scrollContainer" style="height: 90%; width: 100%; overflow: auto; justify-content: center;">
+        <div style="height: auto; width: 90%; align-items: center; justify-content: start;">
+
+            <div id="responsesDiv"></div>
+
+        </div>
+    </div>
+
+    <form id="chatForm">
+        <input type="text" id="messageInput" placeholder="Message Synthia..." autocomplete="off" spellcheck="false" title="">
+        <button type="submit" id="submitBtn">Send</button>
+    </form>
+
+	<script src="/js/script.js"></script>
+</body>
+
+</html>

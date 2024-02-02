@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/chat', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'chat.html'));
+});
+
 app.use((req, res) => {
 	res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });

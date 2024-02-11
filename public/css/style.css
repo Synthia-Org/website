@@ -1,21 +1,97 @@
-body {
-	font-family: Arial, sans-serif;
-	background-color: #f2f2f2;
-	color: #333333;
+@import url('https://fonts.cdnfonts.com/css/mukta');
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-h1 {
-	font-size: 24px;
-	font-weight: bold;
-	color: #ff0000;
+/* ================= VARIABLE ================ */
+:root {
+--primary-color: hsl(0, 44%, 93%);
+--primary-color-alt: hsl(154, 26%, 38%);
+--second-color: #efeeef;
+--second-color-alt: hsla(220, 100%, 99%, 0.65);
+--third-color: hsl(0, 0%, 85%);
+--white-color: #1a1919; /* Updated font color to white */
+--white-color-alt: hsl(0, 0%, 0%);
+--dark-color: #2C2C2C;
 }
 
-p {
-	font-size: 16px;
-	line-height: 1.5;
+/* ================= BASE ==================== */
+li {
+  list-style: none;
 }
-
 a {
-	color: #0066cc;
-	text-decoration: none;
+  text-decoration: none;
 }
+img {
+  width: 100%;
+  height: auto;
+}
+
+.container {
+  padding: 0 2rem;
+}
+
+/* -- BODY -- */
+body {
+  font-family: Poppins;
+  font-size: 1rem;
+  background-color: var(--white-color);
+}
+
+/* ================= HEADER ================ */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--dark-color);
+  padding: 1rem 2rem;
+}
+.company-logo {
+    color: #ECECEC;
+    font-size: 32px;
+    font-family: Kodchasan;
+    font-weight: 600;
+    word-wrap: break-word
+}
+.nav-items {
+  display: flex;
+  font-weight: bold;
+}
+.nav-item {
+  margin: 0 2rem;
+}
+.nav-link {
+  font-size: 1.1rem;
+  letter-spacing: 0.05rem;
+  position: relative;
+  background: -webkit-linear-gradient(
+    var(--primary-color-alt),
+    var(--primary-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav-link::before {
+  content: "";
+  background: linear-gradient(var(--primary-color), var(--primary-color-alt));
+  width: 100%;
+  height: 0.05rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 150ms;
+}
+.nav-link:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.menu-toggle {
+  display: none;
+}
+

@@ -56,19 +56,8 @@ body {
   background: var(--darkbg);
   color: var(--darkt);
   text-align: center;
-    padding: 2rem 0.5rem;
-    font-family: 'Raleway',Sans-serif;
-    color: #32325d;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    margin: 0;
-    @media(min-width: 40rem) {
-      padding: 2rem;
+  
     }
-  
-  
-}
 .light{
   background: var(--lightbg);
   color: var(--lightt);
@@ -503,7 +492,7 @@ header {
     font-size: 0.8rem;
   }
 }
-/*-------------------start resources-----------------*/
+/*-------------------start resources-----------------
 
 
 .container {
@@ -566,8 +555,8 @@ header {
   }
   .card-image {
     display: flex;
-    justify-content: center; /* aligns items on the horizontal line */
-    align-items: center; /* aligns items on the vertical line */
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
     background-size: cover;
     background-position: center;
@@ -580,4 +569,4 @@ header {
   }
 }
 
-/*--------------end resources------------------------*/
+--------------end resources------------------------*/

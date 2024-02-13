@@ -57,6 +57,18 @@ body {
   background: var(--darkbg);
   color: var(--darkt);
   text-align: center;
+    padding: 2rem 0.5rem;
+    font-family: 'Raleway',Sans-serif;
+    color: #32325d;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    @media(min-width: 40rem) {
+      padding: 2rem;
+    }
+  
+  
 }
 .light{
   background: var(--lightbg);
@@ -469,4 +481,4 @@ header {
     font-size: 0.8rem;
   }
 }
-/*==================================INDEX.HTML END==================================*/
+

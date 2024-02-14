@@ -1,3 +1,4 @@
+/*==================================INDEX.HTML START==================================*/
 @import url('https://fonts.cdnfonts.com/css/mukta');
 *,
 *::before,
@@ -19,7 +20,7 @@
 --white-color-alt: hsl(0, 0%, 0%);
 /*--dark-color: #2C2C2C;*/
 --darkbg: #2C2C2C;
---lightbg: #f4caca;
+--lightbg: #ffffff;
 --toggleHeight: 16em;
 --toggleWidth: 30em;
 --toggleBtnRadius: 10em;
@@ -56,8 +57,19 @@ body {
   background: var(--darkbg);
   color: var(--darkt);
   text-align: center;
-  
+    padding: 2rem 0.5rem;
+    font-family: 'Raleway',Sans-serif;
+    color: #32325d;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    @media(min-width: 40rem) {
+      padding: 2rem;
     }
+  
+  
+}
 .light{
   background: var(--lightbg);
   color: var(--lightt);
@@ -65,14 +77,15 @@ body {
 .tdnn {
   margin: 0 auto;
   /*change size of toggle with font-size*/
-  font-size: 20%;
-  margin-top: 10em;
+  font-size: 15%;
+  margin-top: 0;
    position: relative;
     height: var(--toggleHeight);
     width: var(--toggleWidth);
     border-radius: var(--toggleHeight);
   transition: all 500ms ease-in-out;
   background: var(--bgColor--night);
+  
 }
 .day{
   background: #FFBF71;
@@ -336,15 +349,7 @@ header {
   .menu-toggle {
     display: block;
   }
-  .bx-menu {
-    display: block !important;
-  }
-  .show-bx {
-    display: block !important;
-  }
-  .hide-bx {
-    display: none !important;
-  }
+ 
 }
 @media (min-width: 769px) {
   header {
@@ -356,107 +361,91 @@ header {
   .section-1 {
     justify-content: space-between;
     grid-template-columns: 1fr 1fr;
-    padding: 10rem 5rem 0 5rem;
+    padding:  5rem 2rem 0px 2rem;
+    
   }
-  .slogan .company-title {
-    max-width: 30rem;
-    font-size: 1.8rem;
-    letter-spacing: 0.5rem;
-  }
-  .slogan .company-slogan {
-    max-width: 20rem;
-    font-size: 1.3rem;
-  }
-  /* -------- OFFER SECTION ------------- */
-  .section-2 {
-    margin: 2rem 5rem;
-  }
-  .offer {
-    margin: 5rem 0;
-    align-items: center;
-    justify-content: space-between;
-    grid-template-rows: auto auto;
-  }
-  .offer-1 {
-    grid-template-areas: "offer-1-img offer-desc-1";
-  }
-  .offer-1 img {
-    background-color: var(--dark-color);
-    padding: 2rem 0;
-  }
-  .offer-2 {
-    grid-template-areas: "offer-desc-2 offer-2-img";
-  }
-  .offer-1-img {
-    grid-area: offer-1-img;
-  }
-  .offer-2-img {
-    grid-area: offer-2-img;
-  }
-  .offer-desc-1 {
-    grid-area: offer-desc-1;
-  }
-  .offer-desc-2 {
-    grid-area: offer-desc-2;
-  }
-  .offer-description .offer-title {
-    font-size: 1.9rem;
-    padding: 1.5rem 0 0.5rem 0;
-  }
-  .offer-description .offer-hook {
-    max-width: 30rem;
-  }
-  .offer-description {
-    background-color: var(--white-color-alt);
-    padding: 2rem 1rem;
-  }
-  .offer-description .offer-title {
-    padding: 0.5rem 0 1rem 0;
-  }
-  .offer-description .cart-btn {
-    margin: 2rem 0 0.5rem 0;
-  }
-  /* -------- PRODUCT SECTION ----------- */
-  .section-3 {
-    gap: 5rem;
-  }
-  .product::before {
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 300ms;
-  }
-  .product:hover::before {
-    transform: scaleY(1);
-    transform-origin: top;
-    transition: transform 300ms;
-  }
-  .product_add_cart {
-    transform: scaleY(0);
-    transform-origin: bottom;
-  }
-  .product:hover .product_add_cart {
-    transform: translate(-50%, -50%) scaleY(1);
-    transform-origin: top;
-  }
-  /* -------- SPONSOR SECTION ----------- */
-  .section-4 {
-    margin: 5rem 0;
-  }
-  /* ========= SUBSCRIBE SECTION ========== */
-  .section-5 {
-    padding: 1rem 0;
-  }
-  .section-5 .subscribe-container {
-    display: flex;
-    align-items: center;
-  }
-  input[type="text"] {
-    padding: 0 1rem;
-    width: 15rem;
-  }
-  input[type="submit"] {
-    width: 10rem;
-  }
+
+/* =============== CARDS =============== */
+.Hcard-container {
+  height: 160vh;
+  margin:-35% -50px 75%; /* Update the margin value to move the section up */
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+
+
+.Hcards {
+  width: 60%;
+ 
+  flex-wrap: wrap;
+}
+
+.Hcard {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 4px 4px 15px 2px rgba(0, 0, 0, 0.25);
+  margin: 0.5rem;
+  color:black;
+}
+
+/* Make one card slightly pinker */
+.Hcard:nth-child(odd) {
+  background: rgba(255, 200, 200, 0.57);
+  margin-top: -30%; /* Bring the card up by 10 pixels */
+  
+  
+}
+
+/* Make the other card red and position it */
+.Hcard:nth-child(even) {
+  background: rgba(255, 134, 217, 0.7);
+  position: relative;
+  left: 95px;
+  margin-top: -20px; /* Bring the card up by 10 pixels */
+  z-index: 3;
+}
+
+
+/* =============== CHATBOT BUTTON =============== */
+
+.chatbotbtn {
+  position: relative;
+  left:99px;
+}
+.circle{
+  margin-left: auto;
+  margin-left:60%;
+  margin-top: 10%;
+}
+.botbutton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50px;
+  width: 150px; /* Adjust the width as needed */
+  border-radius: 30px;
+  border: none;
+  box-shadow: 4px 4px 30px 0px rgba(137, 219, 123, 0.50);
+  background-color: #4BDC96;
+  font-size: 18px;
+  letter-spacing: 1px;
+  transition: 0.2s all;
+  outline: none;
+}
+
+.botbutton:hover {
+  background-color: #4BDC96;
+  box-shadow: 0 0 120px #4BDC96;
+  letter-spacing: 2px;
+}
+
+.botbutton:active {
+  transform: translateY(4px);
+}
+
   /* =============== FOOTER =============== */
   .top-footer {
     flex-direction: row;
@@ -492,81 +481,4 @@ header {
     font-size: 0.8rem;
   }
 }
-/*-------------------start resources-----------------
 
-
-.container {
-  display: flex;
-  -webkit-display: box;
-  -moz-display: box;
-  -ms-display: flexbox;
-  -webkit-display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
-}
-
-.cards {
-  display: flex;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  width: 100%;
-  @media(min-width: 40rem) {
-    width: 50%;
-  }
-  @media(min-width: 56rem) {
-    width: 33.3%;
-  }
-
-  .card-item {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
-    overflow: hidden;
-    transition: transform 0.5s;
-    -webkit-transition: transform 0.5s;
-
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.1);
-      -webkit-transform: scale(1.1);
-      .card-image {
-        opacity: 1;
-      }
-    }
-  }
-
-  .card-info {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    padding: 1rem;
-    line-height: 1.5em;
-  }
-
-  .card-title {
-    font-size: 25px;
-    line-height: 1.1em;
-    color: #32325d;
-    margin-bottom: 0.2em;
-  }
-  .card-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 6px 6px 0px 0px;
-    opacity: 0.91;
-    width: auto;
-    height: auto;
-  
-  }
-}
-
---------------end resources------------------------*/

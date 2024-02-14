@@ -1,4 +1,3 @@
-/*==================================INDEX.HTML START==================================*/
 @import url('https://fonts.cdnfonts.com/css/mukta');
 *,
 *::before,
@@ -57,18 +56,6 @@ body {
   background: var(--darkbg);
   color: var(--darkt);
   text-align: center;
-    padding: 2rem 0.5rem;
-    font-family: 'Raleway',Sans-serif;
-    color: #32325d;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    margin: 0;
-    @media(min-width: 40rem) {
-      padding: 2rem;
-    }
-  
-  
 }
 .light{
   background: var(--lightbg);
@@ -362,13 +349,14 @@ header {
     justify-content: space-between;
     grid-template-columns: 1fr 1fr;
     padding:  5rem 2rem 0px 2rem;
+    height: 73vh;
     
   }
 
 /* =============== CARDS =============== */
 .Hcard-container {
-  height: 160vh;
-  margin:-35% -50px 75%; /* Update the margin value to move the section up */
+  height: 86vh;
+  margin:0% -49px 74%; /* Update the margin value to move the section up */
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -480,5 +468,64 @@ header {
     color: hsla(0, 0%, 98%, 0.322);
     font-size: 0.8rem;
   }
+}
+  /* =============== CARDS =============== */
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;500;700;900&display=swap');
+
+body {
+  background: #32292f;
+}
+
+
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.Mcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+
+.Mcard {
+  overflow: hidden;
+  text-align: center;
+  width: 250px; /* Adjust the width as needed */
+  height: 350px; /* Adjust the height as needed */
+  background:#8DCBAD;
+  padding: 100px 20px 20px;
+  border-radius: 30px;
+  position: relative;
+  margin: 30px;
+  backdrop-filter: blur(15px);
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-left: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.Mnumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  margin-top: -40px;
+  margin-left: auto; /* Add this line to center the Mnumber horizontally */
+  margin-right: auto; /* Add this line to center the Mnumber horizontally */
+}
+
+.Mtitle {
+  position: relative;
+  z-index: 1;
+  color:black;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 52px; /* Adjust the margin-top as needed to bring the title down */
 }
 

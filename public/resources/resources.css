@@ -185,7 +185,106 @@ p img {
   left: 0;
   width: 100%; 
 }
+/*--------------card3------------*/
+.header3 {
+  height: 360px;
+  z-index: 10;
+}
+.header-banner {
+  background-image: url('https://sdaho.org/wp-content/uploads/2022/03/samhsaresized.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+}
 
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; 
+}
+/*--------------card4------------*/
+.header4 {
+  height: 360px;
+  z-index: 10;
+}
+.header-banner {
+  background-image: url('https://nationalhealthcouncil.org/wp-content/uploads/2020/06/mha.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; 
+}
+/*--------------card5------------*/
+.header5 {
+  height: 360px;
+  z-index: 10;
+}
+.header-banner {
+  background-image: url('https://nationalhealthcouncil.org/wp-content/uploads/2020/06/mha.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; 
+}
+/*--------------card6------------*/
+.header6 {
+  height: 360px;
+  z-index: 10;
+}
+.header-banner {
+  background-image: url('https://nationalhealthcouncil.org/wp-content/uploads/2020/06/mha.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; 
+}
+/*--------------card7------------*/
+.header7 {
+  height: 360px;
+  z-index: 10;
+}
+.header-banner {
+  background-image: url('https://nationalhealthcouncil.org/wp-content/uploads/2020/06/mha.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; 
+}
 /*--------------button------------*/
 button {
   margin: 20px;

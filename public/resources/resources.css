@@ -106,16 +106,16 @@ body {
     height: 360px;
     z-index: 10;
 }
-.header-banner {
+.header1-banner {
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/92/Crisis_Text_Line_logo.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto 100%;
     width: 100%;
     height: 300px;
 }
 
-.fixed-header {
+.fixed-header1 {
     position: fixed;
     top: 0;
     left: 0;
@@ -149,6 +149,7 @@ aside {
 p img {
     max-width: 100%;
     max-height: 250px;
+    
 }
 
 @media only screen and (max-width: 960px) {
@@ -170,16 +171,16 @@ p img {
   height: 360px;
   z-index: 10;
 }
-.header-banner {
-  background-image: url('https://nationalhealthcouncil.org/wp-content/uploads/2020/06/mha.jpg');
+.header2-banner {
+  background-image: url('https://static.wixstatic.com/media/e9c888_c0fa1704b9ee4115af9a2f5a05ff32a0~mv2.png/v1/fill/w_275,h_93,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7c%20hz%20logo%20with%20text%20dark%20lg.png');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto 100%;
   width: 100%;
   height: 300px;
 }
 
-.fixed-header {
+.fixed-header2 {
   position: fixed;
   top: 0;
   left: 0;
@@ -190,16 +191,16 @@ p img {
   height: 360px;
   z-index: 10;
 }
-.header-banner {
+.header3-banner {
   background-image: url('https://sdaho.org/wp-content/uploads/2022/03/samhsaresized.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto 100%;
   width: 100%;
   height: 300px;
 }
 
-.fixed-header {
+.fixed-header3 {
   position: fixed;
   top: 0;
   left: 0;
@@ -210,16 +211,16 @@ p img {
   height: 360px;
   z-index: 10;
 }
-.header-banner {
-  background-image: url('https://nationalhealthcouncil.org/wp-content/uploads/2020/06/mha.jpg');
+.header4-banner {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTKPFsse7h7ISXMx0LBxYEko_-P2JjFFV6jw&usqp=CAU');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto 100%;
   width: 100%;
   height: 300px;
 }
 
-.fixed-header {
+.fixed-header4 {
   position: fixed;
   top: 0;
   left: 0;
@@ -230,16 +231,16 @@ p img {
   height: 360px;
   z-index: 10;
 }
-.header-banner {
+.header5-banner {
   background-image: url('https://nationalhealthcouncil.org/wp-content/uploads/2020/06/mha.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:auto 100% ;
   width: 100%;
   height: 300px;
 }
 
-.fixed-header {
+.fixed-header5 {
   position: fixed;
   top: 0;
   left: 0;
@@ -250,16 +251,16 @@ p img {
   height: 360px;
   z-index: 10;
 }
-.header-banner {
+.header6-banner {
   background-image: url('https://nationalhealthcouncil.org/wp-content/uploads/2020/06/mha.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto 100%;
   width: 100%;
   height: 300px;
 }
 
-.fixed-header {
+.fixed-header6 {
   position: fixed;
   top: 0;
   left: 0;
@@ -270,16 +271,16 @@ p img {
   height: 360px;
   z-index: 10;
 }
-.header-banner {
+.header7-banner {
   background-image: url('https://nationalhealthcouncil.org/wp-content/uploads/2020/06/mha.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto 100%;
   width: 100%;
   height: 300px;
 }
 
-.fixed-header {
+.fixed-header7 {
   position: fixed;
   top: 0;
   left: 0;

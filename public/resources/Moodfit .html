@@ -1,26 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Crisis Text Line</title>
+    <title>Moodfit </title>
     <link rel="stylesheet" href="resources.css">
     <script src="resources.js"></script>
+    <head>
+      <script src="resources.js"></script>
+      <style>
+          /* resets */
+           body { 
+               margin:0px; 
+               padding:0px; }
+
+          /* main */
+             header {
+              height: 360px;
+              z-index: 10;
+                     }
+            .header-banner {
+              background-color: #333;
+              background-image: url('data:image/png;base64,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');
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              width: 100%;
+              height: 300px;
+            }
+
+            header h1 {
+               background-color: rgba(18,72,120, 0.8);
+               color: #fff;
+               padding: 0 1rem;
+               position: absolute;
+               top: 2rem; 
+               left: 2rem;
+            }
+
+            .fixed-header {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%; 
+              height: auto;
+            }
+           /* demo content */
+body { 
+    color: #292f36;
+    font-family: helvetica;
+    line-height: 1.6;
+}
+.content{ 
+    margin: 0 auto;
+    padding: 4rem 0;
+    width: 960px;
+    max-width: 100%;
+}
+article {
+    float: left;
+    width: 720px;
+}
+article p:first-of-type {
+    margin-top: 0;
+}
+aside {
+    float: right;
+    width: 120px;
+}
+p img {
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 960px) {
+    .content{ 
+        padding: 2rem 0;
+    }
+    article {
+        float: none;
+        margin: 0 auto;
+        width: 96%;
+    }
+    article:last-of-type {  
+        margin-bottom: 3rem;
+    }
+}
+
+      </style>
+  </head>
 </head>
 <body>
-    <header6>
-        <div class="header-banner">
-        </div>
-    </header6>
+    <header>
+      <div class="header-banner">
+          <h1>Moodfit </h1>
+      </div>
+  </header>
+       
+  <section class="content">
+      <article>
+          <p>Moodfit is a free app that helps you track your mood and provides resources on managing negative emotions you may be experiencing.</p>
+          <p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzVI-odrm-K9f-pK4rqxeNOHjD3mfPcvQTlg&usqp=CAU"></p>
+          <p>You can download it on the App Store and Google Play. This app aims to follow the structure of a fitness app, but instead of focusing on improving your physical health, it targets your mental health and wellbeing. </p>
+         
+          <p>There’s even a cognitive behavioral therapy (CBT) portion of the app that can teach you valuable skills such as gratitude and mindfulness. It provides insight into what impacts your mood, such as your diet and activity levels, and what you can do to improve it in the future. You can also get information about different forms of treatment and their effectiveness, such as medications or therapy.  </p>
+      </article>
       
-      <section class="content">
-        <article>
-          <p>If you’re in a crisis, you can text HOME to 741741 to connect with a crisis counselor. You can also message them on Facebook. The Crisis Text LIne website has valuable information about coping with challenges such as emotional abuse, the coronavirus, and depression, as well as a blog and a page that links to resources such as apps, websites, and hotlines that can help with your specific concerns.
-      
-          </p>
-          <p><img src="https://www.crisistextline.org/wp-content/uploads/2020/03/social-share.png"></p>
-          <p>TThe website is available in both Spanish and English</p>
-          <p>Text HOME to 741741 from anywhere in the United States, anytime. Crisis Text Line is here for any crisis. A live, trained Crisis Counselor receives the text and responds, all from our secure online platform. The volunteer Crisis Counselor will help you move from a hot moment to a cool moment.</p>
-        </article>
-      
-      </section>
+  </section> 
+    
 </body>
 </html> 
+

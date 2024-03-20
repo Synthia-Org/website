@@ -133,6 +133,19 @@ button:hover {
 	transition: 0.3s;
 }
 
+#clearChatBtn {
+	height: 40%;
+	background: #424242;
+	border-radius: 8px;
+	align-items: center;
+	gap: 10px;
+	transition: 0.3s;
+}
+#clearChatBtn:hover {
+	background: #C22E2E;
+	transition: 0.3s;
+}
+
 
 .gameTitle {
 	font-size: 20px;

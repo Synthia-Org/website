@@ -113,7 +113,7 @@
 					</div>
 				</div>
 
-				<form id="chat-form" class="flex flexCol" style="height: 110px; width: 100%; align-items: center; justify-content: center; gap: 10px;">
+				<form id="chat-form" class="flex flexRow" style="height: 110px; width: 100%; align-items: center; justify-content: center; gap: 10px;">
 					<div class="flex flexRow" style="width: 60%; height: 40%;">
 						<input style="width: calc(100% - 32px); color: #B0B0B0; background: #424242; padding: 8px 12px; border: none; border-radius: 8px 0 0 8px; outline: none;" type="text" id="message-input" placeholder="Message Synthia..." autocomplete="off" spellcheck="false" title="">
 
@@ -122,11 +122,9 @@
 						</button>
 					</div>
 
-					<span style="width: 100%; display: flex; align-items: center; justify-content: center;">
-						<span style="background: #242424; width: 100%; position: absolute; z-index: 10; display: flex; align-items: center; justify-content: center;">
-							<span id="connectionMsg" style="font-size: 12px; font-weight: 400; text-transform: uppercase;"></span>
-						</span>
-					</span>
+					<button class="flex flexRow" id="clearChatBtn">
+						<i class="fa-solid fa-trash" style="color: var(--white);"></i> Clear Chat
+					</button>
 				</form>
 			</div>
 		</div>

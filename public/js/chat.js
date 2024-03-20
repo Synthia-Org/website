@@ -6,6 +6,7 @@ let responsesDiv = document.getElementById('responsesDiv');
 var botResponse = document.querySelector('.botResponse');
 const scrollContainer = document.getElementById('scrollContainer');
 const startMsg = document.getElementById('startMsg');
+const clearChatBtn = document.getElementById('clearChatBtn');
 
 
 
@@ -61,6 +62,7 @@ chatForm.addEventListener('submit', function (event) {
 
 			saveResponses();
 			changeSubmitBtnColor();
+			changeClearChatBtnColor();
 
 			scrollContainer.scrollTop = scrollContainer.scrollHeight;
 		})
@@ -93,9 +95,27 @@ function changeSubmitBtnColor() {
 	}
 }
 
+function changeClearChatBtnColor() {
+	if (responsesDiv.innerHTML === '' || localStorage.getItem('responsesDiv') === '') {
+		clearChatBtn.title = 'Chat is already empty';
+		clearChatBtn.style.opacity = '0.5';
+		clearChatBtn.style.cursor = 'not-allowed';
+		clearChatBtn.style.transition = '0.3s';
+	} else {
+		clearChatBtn.title = 'Clear Chat';
+		clearChatBtn.style.opacity = '1';
+		clearChatBtn.style.cursor = 'pointer';
+		clearChatBtn.style.transition = '0.3s';
+	}
+}
+
 
 messageInput.addEventListener('input', () => {
 	changeSubmitBtnColor();
+});
+
+clearChatBtn.addEventListener('click', () => {
+	clearChat();
 });
 
 
@@ -108,6 +128,20 @@ function loadResponses() {
 	scrollContainer.scrollTop = scrollContainer.scrollHeight;
 }
 
+function clearChat() {
+	if (responsesDiv.innerHTML === '') {
+		return false;
+	} else {
+		if (confirm('Are you sure you want to clear the chat? this action is irreversible!')) {
+			responsesDiv.innerHTML = '';
+			localStorage.removeItem('responsesDiv');
+			saveResponses();
+			window.location.reload();
+		} else {
+			return false;
+		}
+	}
+}
 
 
 setInterval(() => {
@@ -119,4 +153,5 @@ window.addEventListener('load', () => {
 	startMsgStatus();
 	loadResponses();
 	changeSubmitBtnColor();
+	changeClearChatBtnColor();
 });

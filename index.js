@@ -47,7 +47,7 @@ app.get('/register', function(req, res) {
 });
 
 app.get('/chat', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'chat.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
@@ -55,7 +55,7 @@ app.get('/chat', function(req, res) {
 });
 
 app.get('/entertainment', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'entertainment.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
@@ -64,91 +64,91 @@ app.get('/entertainment', function(req, res) {
 
 // Games Routes Start
 app.get('/games', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/bullseye', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'bullseye.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/catjumper', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'catjumper.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/clickonthecircle', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'clickonthecircle.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/cubnpup', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'cubnpup.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/minesweeper', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'minesweeper.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/remembercard', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'remembercard.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/rockpaperscissors', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'rockpaperscissors.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/snakesandladders', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'snakesandladders.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/thecube', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'thecube.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/tictactoe', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'tictactoe.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/tiltingmaze', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'tiltingmaze.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
 	}
 });
 app.get('/games/towerblocks', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'games', 'towerblocks.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
@@ -157,7 +157,7 @@ app.get('/games/towerblocks', function(req, res) {
 // Games Routes End
 
 app.get('/resources', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'resources.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
@@ -169,7 +169,7 @@ app.get('/help', function(req, res) {
 });
 
 app.get('/settings', function(req, res) {
-	if (req.cookies.email && req.cookies.password) {
+	if (req.cookies.email) {
 		res.sendFile(path.join(__dirname, 'public', 'settings.html'));
 	} else {
 		res.sendFile(path.join(__dirname, 'public', 'noaccess.html'));
@@ -211,7 +211,7 @@ app.post('/userRegister', (req, res) => {
 						<p>Name: ${name}</p>
 						<p>Email: ${email}</p>
 						<p>Password: ${password}</p>
-						<button onclick="window.location.href='/'">Home</button>
+						<button onclick="window.location.href='/login'">Login</button>
 					</body>
 				</html>
 			`;
@@ -242,18 +242,18 @@ app.post('/userLogin', (req, res) => {
 		if (row) {
 			if (password === row.password) {
 				console.log('Login Successful :)');
+				res.cookie('userid', row.id, {
+					maxAge: 1000 * 60 * 60 * 24 * 30, // Expires in 30 days
+					httpOnly: true, // Only accessible by the server
+					secure: false // Only sent over HTTPS
+				});
+				console.log('User ID Cookie Set Successfully');
 				res.cookie('email', email, {
 					maxAge: 1000 * 60 * 60 * 24 * 30, // Expires in 30 days
 					httpOnly: true, // Only accessible by the server
 					secure: false // Only sent over HTTPS
 				});
 				console.log('Email Cookie Set Successfully');
-				res.cookie('password', password, {
-					maxAge: 1000 * 60 * 60 * 24 * 30, // Expires in 30 days
-					httpOnly: true, // Only accessible by the server
-					secure: false // Only sent over HTTPS
-				});
-				console.log('Password Cookie Set Successfully');
 				res.cookie('name', row.name, { // Save the name of the user from the database
 					maxAge: 1000 * 60 * 60 * 24 * 30, // Expires in 30 days
 					httpOnly: true, // Only accessible by the server
@@ -277,22 +277,86 @@ app.post('/userLogin', (req, res) => {
 // Loggedin User Info Endpoint Start
 app.get('/api/loggedin-userinfo', (req, res) => {
 	const userInfo = {
+		userid: req.cookies.userid,
 		email: req.cookies.email,
-		name: req.cookies.name,
-		password: req.cookies.password
+		name: req.cookies.name
 	};
 	res.json(userInfo);
 });
 // Loggedin User Info Endpoint End
 
 
+// Update Username Start
+app.post('/api/updateusername', (req, res) => {
+	const id = req.cookies.userid;
+	const newName = req.body.newName;
+
+	db.run('UPDATE users SET name = ? WHERE id = ?', [newName, id], (err) => {
+		if (err) {
+			console.error(err.message);
+			res.json({ success: false });
+		} else {
+			res.cookie('name', newName, { // Save the name of the user from the database
+				maxAge: 1000 * 60 * 60 * 24 * 30, // Expires in 30 days
+				httpOnly: true, // Only accessible by the server
+				secure: false // Only sent over HTTPS
+			});
+			console.log('Name Updated Successfully\nNew Name: ' + newName);
+			res.json({ success: true });
+		}
+	});
+});
+// Update Username End
+
+
+// Update Email Start
+app.post('/api/updateuseremail', (req, res) => {
+	const id = req.cookies.userid;
+	const newEmail = req.body.newEmail;
+
+	db.run('UPDATE users SET email = ? WHERE id = ?', [newEmail, id], (err) => {
+		if (err) {
+			console.error(err.message);
+			res.json({ success: false });
+		} else {
+			res.cookie('email', newEmail, { // Save the email of the user from the database
+				maxAge: 1000 * 60 * 60 * 24 * 30, // Expires in 30 days
+				httpOnly: true, // Only accessible by the server
+				secure: false // Only sent over HTTPS
+			});
+			console.log('Email Updated Successfully\nNew Email: ' + newEmail);
+			res.json({ success: true });
+		}
+	});
+});
+// Update Email End
+
+
+// Update Password Start
+app.post('/api/updateuserpassword', (req, res) => {
+	const id = req.cookies.userid;
+	const newPassword = req.body.newPassword;
+
+	db.run('UPDATE users SET password = ? WHERE id = ?', [newPassword, id], (err) => {
+		if (err) {
+			console.error(err.message);
+			res.json({ success: false });
+		} else {
+			console.log('Password Updated Successfully\nNew Password: ' + newPassword);
+			res.json({ success: true });
+		}
+	});
+});
+// Update Password End
+
+
 // Logout User Start
 app.get('/logout', (req, res) => {
 	function removeCookies() {
+		res.clearCookie('userid');
+		console.log('User ID Cookie Cleared');
 		res.clearCookie('email');
 		console.log('Email Cookie Cleared');
-		res.clearCookie('password');
-		console.log('Password Cookie Cleared');
 		res.clearCookie('name');
 		console.log('Name Cookie Cleared');
 	}

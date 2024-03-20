@@ -5,6 +5,7 @@
 	--gray: #B0B0B0;
 	--darkGray: #333333;
 	--black: #242424;
+	--accent: #3790D0;
 }
 
 * {
@@ -78,7 +79,7 @@ button:hover {
 .pageContent {
 	height: 100%;
 	width: calc(100% - 350px);
-	background: #242424;
+	background: var(--black);
 	align-items: center;
 	justify-content: start;
 	overflow: auto;
@@ -108,14 +109,14 @@ button:hover {
 	padding: 15px 20px;
 	opacity: 1;
 	text-decoration: none;
-	color: #ECECEC;
+	color: var(--white);
 	align-items: center;
 	gap: 15px;
 	border-radius: 5px;
 	transition: 0.3s;
 }
 .navLink:hover {
-	background: #333333;
+	background: var(--darkGray);
 	transition: 0.3s;
 }
 
@@ -124,8 +125,8 @@ button:hover {
 	padding: 15px 20px;
 	opacity: 1;
 	text-decoration: none;
-	color: #242424;
-	background: #ECECEC;
+	color: var(--black);
+	background: var(--white);
 	align-items: center;
 	gap: 15px;
 	border-radius: 5px;
@@ -145,15 +146,15 @@ button:hover {
 	gap: 10px;
 }
 .gameTitle i {
-	color: #3790D0;
+	color: var(--accent);
 	font-size: 14px;
 }
 
 .iframe {
 	height: 75vh;
 	width: calc(100% - 4px);
-	background: #B0B0B0;
-	border: 2px solid #3790D0;
+	background: var(--gray);
+	border: 2px solid var(--accent);
 	border-radius: 5px;
 }
 .iframe iframe {
@@ -204,8 +205,8 @@ details form {
 details form input {
 	padding: 12px 15px;
 	border-radius: 5px;
-	color: #B0B0B0;
-	background: #333333;
+	color: var(--gray);
+	background: var(--darkGray);
 	border: none;
 	outline: none;
 	transition: 0.3s;
@@ -216,7 +217,7 @@ details form input:focus {
 }
 
 details button {
-	background: #3790D0;
+	background: var(--accent);
 	padding: 12px 22px;
 }
 

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Account Settings | Synthia</title>
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet">
+
+	<script src="/js/script.js" defer></script>
+	<script src="/js/account.js" defer></script>
+
+	<!-- Preload CSS -->
+	<link rel="preload" href="/css/style.css" as="style" type="text/css">
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" type="text/css" crossorigin>
+	<!-- Preload JS -->
+	<link rel="preload" href="/js/script.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/menubar.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/navmenu.js" as="script" type="text/javascript">
+	<!-- Prefetch HTML -->
+	<link rel="prefetch" href="index.html" as="document">
+	<link rel="prefetch" href="chat.html" as="document">
+	<link rel="prefetch" href="entertainment.html" as="document">
+	<link rel="prefetch" href="games.html" as="document">
+	<link rel="prefetch" href="resources.html" as="document">
+	<link rel="prefetch" href="settings.html" as="document">
+	<link rel="prefetch" href="help.html" as="document">
+</head>
+
+<body>
+
+	<div class="flex flexCol" style="height: 100vh; width: 100%; position: fixed; top: 0; align-items: center; justify-content: center;">
+
+		<!-- MENUBAR START =====================================================================-->
+		<div id="menubar"></div>
+		<script src="/js/menubar.js"></script>
+		<!--======================================================================= MENUBAR END -->
+
+
+		<!-- PAGE CONTENT START ================================================================-->
+		<div class="flex flexRow" style="height: calc(100% - 70px); width: 100%;">
+
+			<!-- NAVMENU START =================================================================-->
+			<div class="flex" id="navmenu"></div>
+			<script src="/js/navmenu.js"></script>
+			<!--=================================================================== NAVMENU END -->
+
+			<div class="flex flexCol pageContent">
+				<div class="flex containerBlock">
+
+					<div class="flex flexCol container" style="gap: 20px;">
+						<h1>Account Settings</h1>
+
+						<div class="flex flexCol" style="width: 100%; gap: 15px;">
+							<details>
+								<summary>
+									<span style="display: flex; flex-direction: row; align-items: center; font-weight: 500; gap: 15px;">
+										<i class="fa-solid fa-user" style="font-size: 14px;"></i>
+										Name:
+
+										<span style="font-weight: 300;" id="existingName"></span>
+									</span>
+
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#3790D0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+										<path d="M6 9l6 6l6 -6" />
+									</svg>
+								</summary>
+
+								<form action="/settings/change-name" method="POST" id="nameForm">
+									<input type="text" id="newName" name="newName" placeholder="New Name" required>
+
+									<div style="width: 100%; display: flex; justify-content: flex-start;">
+										<button type="submit" id="nameFormBtn">Save</button>
+									</div>
+								</form>
+							</details>
+
+							<details>
+								<summary>
+									<span style="display: flex; flex-direction: row; align-items: center; font-weight: 500; gap: 15px;">
+										<i class="fa-solid fa-envelope" style="font-size: 14px;"></i>
+										Email Address:
+
+										<span style="font-weight: 300;" id="existingEmail"></span>
+									</span>
+
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#3790D0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+										<path d="M6 9l6 6l6 -6" />
+									</svg>
+								</summary>
+
+								<form action="/settings/change-email" method="POST" id="emailForm">
+									<input type="email" id="newEmail" name="newEmail" placeholder="New Email" required>
+
+									<div style="width: 100%; display: flex; justify-content: flex-start;">
+										<button type="submit" id="emailFormBtn">Save</button>
+									</div>
+								</form>
+							</details>
+
+							<details>
+								<summary>
+									<span style="display: flex; flex-direction: row; align-items: center; font-weight: 500; gap: 15px;">
+										<i class="fa-solid fa-key" style="font-size: 14px;"></i>
+										Update Password
+									</span>
+
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#3790D0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+										<path d="M6 9l6 6l6 -6" />
+									</svg>
+								</summary>
+
+								<form action="/settings/change-password" method="POST" id="passwordForm">
+									<input type="password" id="existingPassword" name="existingPassword" placeholder="Existing Password" required>
+									<input type="password" id="newPassword" name="newPassword" placeholder="New Password" required>
+									<input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+
+									<div style="width: 100%; display: flex; justify-content: flex-start;">
+										<button type="submit" id="passwordFormBtn">Save</button>
+									</div>
+								</form>
+							</details>
+
+							<div style="width: 100%; display: flex; justify-content: flex-end;">
+								<button id="logoutBtn">Log Out</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<!--================================================================== PAGE CONTENT END -->
+
+	</div>
+
+</body>
+
+</html>

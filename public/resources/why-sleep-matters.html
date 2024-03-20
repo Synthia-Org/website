@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Why Sleep Matters - Resources | Synthia</title>
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet">
+
+	<script src="/js/script.js" defer></script>
+
+	<!-- Preload CSS -->
+	<link rel="preload" href="/css/style.css" as="style" type="text/css">
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" type="text/css" crossorigin>
+	<!-- Preload JS -->
+	<link rel="preload" href="/js/script.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/menubar.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/navmenu.js" as="script" type="text/javascript">
+	<!-- Prefetch HTML -->
+	<link rel="prefetch" href="index.html" as="document">
+	<link rel="prefetch" href="chat.html" as="document">
+	<link rel="prefetch" href="entertainment.html" as="document">
+	<link rel="prefetch" href="games.html" as="document">
+	<link rel="prefetch" href="resources.html" as="document">
+	<link rel="prefetch" href="settings.html" as="document">
+	<link rel="prefetch" href="help.html" as="document">
+</head>
+
+<body>
+
+	<div class="flex flexCol"
+		style="height: 100vh; width: 100%; position: fixed; top: 0; align-items: center; justify-content: center;">
+
+		<!-- MENUBAR START =====================================================================-->
+		<div id="menubar"></div>
+		<script src="/js/menubar.js"></script>
+		<!--======================================================================= MENUBAR END -->
+
+
+		<!-- PAGE CONTENT START ================================================================-->
+		<div class="flex flexRow" style="height: calc(100% - 70px); width: 100%;">
+
+			<!-- NAVMENU START =================================================================-->
+			<div class="flex" id="navmenu"></div>
+			<script src="/js/navmenu.js"></script>
+			<!--=================================================================== NAVMENU END -->
+
+			<div class="flex flexCol pageContent">
+				<div class="flex containerBlock">
+
+					<div class="flex flexCol container" style="gap: 40px; padding-bottom: 40px;">
+
+						<span class="flex flexCol" style="gap: 30px;">
+							<h1 style="font-size: 20px;">
+								<a class="flex flexRow" href="/resources" title="More Resources" style="color: var(--white); width: max-content; text-decoration: none; opacity: 1; align-items: center; gap: 10px;">
+									<i class="fa-solid fa-chevron-left" style="color: #3790D0; font-size: 14px;"></i>
+									Why Sleep Matters
+								</a>
+							</h1>
+
+							<div style="height: 400px; width: 100%;">
+								<img src="/assets/images/resources/why-sleep-matters.jpg" alt="" style="height: 100%; width: 100%; object-fit: cover; object-position: center; border-radius: 10px;">
+							</div>
+						</span>
+
+						<p style="text-align: justify; text-align-last: left;">Did you know we spend a third of our lives asleep? That's because sleep is just as important as eating, drinking, and breathing! It helps our bodies and brains recharge and function properly.</p>
+
+						<span class="flex flexCol" style="gap: 15px;">
+							<h2 style="font-size: 18px;">Why is sleep important?</h2>
+							<p style="text-align: justify; text-align-last: left;">During sleep, our brains process information, store memories, and repair themselves. It also helps us concentrate, learn, and fight off illness.</p>
+						</span>
+
+						<span class="flex flexCol" style="gap: 15px;">
+							<h2 style="font-size: 18px;">How much sleep do we need?</h2>
+							<p style="text-align: justify; text-align-last: left;">The amount of sleep we need varies, but most adults need around 7-8 hours per night. Feeling tired and sluggish during the day could be a sign you're not getting enough sleep.</p>
+						</span>
+
+						<span class="flex flexCol" style="gap: 15px;">
+							<h2 style="font-size: 18px;">What happens if we don't get enough sleep?</h2>
+							<p style="text-align: justify; text-align-last: left;">Not getting enough sleep can make us feel tired, irritable, and forgetful. It can also increase our risk of health problems like heart disease and diabetes.</p>
+						</span>
+
+						<span class="flex flexCol" style="gap: 15px;">
+							<h2 style="font-size: 18px;">Tips for better sleep:</h2>
+							<p style="text-align: justify; text-align-last: left;">There are many things you can do to improve your sleep quality, such as:</p>
+							<ul style="list-style-type: disc; padding-inline-start: 30px;">
+								<li style="margin-bottom: 4px;">Go to bed and wake up at the same time each day, even on weekends.</li>
+								<li style="margin-bottom: 4px;">Create a relaxing bedtime routine, such as taking a warm bath or reading a book.</li>
+								<li style="margin-bottom: 4px;">Make sure your bedroom is dark, quiet, and cool.</li>
+								<li style="margin-bottom: 4px;">Avoid caffeine and alcohol before bed.</li>
+								<li style="margin-bottom: 4px;">Get regular exercise, but avoid strenuous activity close to bedtime.</li>
+							</ul>
+						</span>
+
+						<p style="text-align: justify; text-align-last: left;">Getting enough sleep is essential for our physical and mental health. By making small changes to our habits, we can all improve our sleep and feel our best!</p>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<!--================================================================== PAGE CONTENT END -->
+
+	</div>
+
+</body>
+
+</html>

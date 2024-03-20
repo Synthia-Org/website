@@ -1,9 +1,13 @@
-const chatForm = document.getElementById('chatForm');
-var messageInput = document.getElementById('messageInput');
+const chatForm = document.getElementById('chat-form');
+var messageInput = document.getElementById('message-input');
 const submitBtn = document.getElementById('submitBtn');
+const submitIcon = document.getElementById('submitIcon');
 let responsesDiv = document.getElementById('responsesDiv');
 var botResponse = document.querySelector('.botResponse');
 const scrollContainer = document.getElementById('scrollContainer');
+const startMsg = document.getElementById('startMsg');
+
+
 
 chatForm.addEventListener('submit', function (event) {
 	event.preventDefault();
@@ -13,13 +17,20 @@ chatForm.addEventListener('submit', function (event) {
 	}
 
 	let myResponseDiv = document.createElement('div');
+	myResponseDiv.classList = 'myResponseCard flex flexRow';
+	myResponseDiv.style = 'width: 100%; align-items: center;';
 	myResponseDiv.innerHTML = `
-		<div class="myResponseText">
+		<div class="flex" style="width: 70px; height: 100%; align-items: center; justify-content: start;">
+			<img style="width: 30px; height: auto; border-radius: 4px;" src="/assets/ui/userIcon.png">
+		</div>
+		<div class="myResponseText" style="height: auto; width: calc(100% - 70px); color: #CCCCCC; background: #333333; line-height: 1.5; font-weight: 300; font-size: 14px; text-align: justify; text-align-last: left; word-break: break-word; padding: 30px 30px; border-radius: 8px;">
 			${messageInput.value}
 		</div>
 	`;
 
 	responsesDiv.appendChild(myResponseDiv);
+
+	startMsgStatus();
 
 	fetch('http://localhost:5005/webhooks/rest/webhook', {
 		method: 'POST',
@@ -34,8 +45,13 @@ chatForm.addEventListener('submit', function (event) {
 		.then(response => response.json())
 		.then(data => {
 			let botResponseDiv = document.createElement('div');
+			botResponseDiv.classList = 'botResponseCard flex flexRow';
+			botResponseDiv.style = 'width: 100%; align-items: center;';
 			botResponseDiv.innerHTML = `
-				<div class="botResponseText">
+				<div class="flex" style="width: 70px; height: 100%; align-items: center; justify-content: start;">
+					<img style="width: 30px; height: auto; border-radius: 4px;" src="/assets/ui/botIcon.png">
+				</div>
+				<div class="botResponseText" style="height: auto; width: calc(100% - 70px); color: #CCCCCC; background: #2C2C2C; line-height: 1.5; font-weight: 300; font-size: 14px; text-align: justify; text-align-last: left; word-break: break-word; padding: 30px 30px; border-radius: 8px;">
 					${data[0].text}
 				</div>
 			`;
@@ -43,10 +59,64 @@ chatForm.addEventListener('submit', function (event) {
 			responsesDiv.appendChild(botResponseDiv);
 			messageInput.value = '';
 
+			saveResponses();
+			changeSubmitBtnColor();
+
 			scrollContainer.scrollTop = scrollContainer.scrollHeight;
 		})
 		.catch(() => {
-			console.log('Error while sending message to bot');
+			console.log('Error fetching data from server');
+
 			scrollContainer.scrollTop = scrollContainer.scrollHeight;
 		});
+});
+
+
+function startMsgStatus() {
+	if (responsesDiv.innerHTML === '') {
+		startMsg.style.display = 'flex';
+	} else if (responsesDiv.innerHTML !== localStorage.getItem('responsesDiv') || responsesDiv.innerHTML !== '') {
+		startMsg.style.display = 'none';
+	}
+}
+
+
+function changeSubmitBtnColor() {
+	if (messageInput.value.trim() === '' || messageInput.value.trim() === ' ') {
+		submitIcon.style.opacity = '0.5';
+		submitBtn.style.cursor = 'not-allowed';
+		submitBtn.style.transition = '0.3s';
+	} else {
+		submitIcon.style.opacity = '1';
+		submitBtn.style.cursor = 'pointer';
+		submitBtn.style.transition = '0.3s';
+	}
+}
+
+
+messageInput.addEventListener('input', () => {
+	changeSubmitBtnColor();
+});
+
+
+function saveResponses() {
+	localStorage.setItem('responsesDiv', responsesDiv.innerHTML);
+}
+
+function loadResponses() {
+	responsesDiv.innerHTML = localStorage.getItem('responsesDiv');
+	scrollContainer.scrollTop = scrollContainer.scrollHeight;
+}
+
+
+
+setInterval(() => {
+	startMsgStatus();
+}, 2000);
+
+
+window.addEventListener('load', () => {
+	startMsgStatus();
+	loadResponses();
+	changeSubmitBtnColor();
 });

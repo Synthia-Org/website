@@ -1,144 +1,61 @@
 <!DOCTYPE html>
-<head><link href='css/style.css' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Kodchasan' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="path/to/vanilla-tilt.min.js"></script>
+<html>
 
-<script type="text/javascript" src="js/script.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<title>Your Friend in Need - Synthia</title>
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet">
+
+	<script src="/js/script.js" defer></script>
+	<script src="/js/menubar.js" defer></script>
+	<script src="/js/navmenu.js" defer></script>
+
+	<!-- Preload CSS -->
+	<link rel="preload" href="/css/style.css" as="style" type="text/css">
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" type="text/css" crossorigin>
+	<!-- Preload JS -->
+	<link rel="preload" href="/js/script.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/menubar.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/navmenu.js" as="script" type="text/javascript">
+	<!-- Prefetch HTML -->
+	<link rel="prefetch" href="index.html" as="document">
+	<link rel="prefetch" href="chat.html" as="document">
+	<link rel="prefetch" href="entertainment.html" as="document">
+	<link rel="prefetch" href="games.html" as="document">
+	<link rel="prefetch" href="resources.html" as="document">
+	<link rel="prefetch" href="settings.html" as="document">
+	<link rel="prefetch" href="help.html" as="document">
 </head>
+
 <body>
-  <header style="background-color: #107857; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-    <div class="company-logo">Synthia</div>
-    <nav class="navbar">
-      <ul class="nav-items">
-        <li class="nav-iatem"><a href="#" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">ChatBot</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Help</a></li>
-        <li class="nav-item"><a href="#"> <button type="submit" class="outline green-white">Reach out  &nbsp <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 19 19" fill="none">
-          <path d="M2 2L17 17M17 17V2.6M17 17H2.6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg></button></a></li>
-            <li class="nav-item">
-              <div class="tdnn">
-                <div class="moon">
-                </div></div>
-                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-               
-            </li>
-      </ul>
-    </nav>
-    
-  </header>
-  <main>
-    <!-- HOME SECTION -->
-    <section class="container section-1" >
-      <div class="Hcard-container">
-      <div class=Hcards>
-        <div class=Hcard>
-          <p>Welcome to our Mental Health Chatbot, a safe and confidential space for support. Your identity is anonymous, and conversations are structured to provide goal-oriented assistance.</p>
-        </div>
-          <div class=Hcard>
-          <p>Take control of your well-being with our user-friendly and resourceful platform. We're here to listen, offer guidance, and empower you on your mental health journey.</p>
-        </div>
-        <div class="chatbotbtn">
-          <button class="botbutton">ChatBot  &nbsp<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 19 19" fill="none">
-            <path d="M2 2L17 17M17 17V2.6M17 17H2.6" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg></button>
-          <svg class="circle" xmlns="http://www.w3.org/2000/svg" width="113" height="113" viewBox="0 0 113 113" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M112.39 64.8286C112.074 66.971 111.637 69.0743 111.087 71.1313H1.91284C1.36287 69.0743 0.92609 66.971 0.609564 64.8286H112.39ZM6.03597 81.9364C5.00892 79.9029 4.10118 77.7987 3.32194 75.6333H109.678C108.899 77.7987 107.991 79.9029 106.964 81.9364H6.03597ZM8.57513 86.4384C9.95732 88.6464 11.4879 90.7519 13.1528 92.7412H99.8472C101.512 90.7519 103.043 88.6464 104.425 86.4384H8.57513ZM25.2012 103.546C22.3998 101.678 19.7746 99.5674 17.356 97.2431H95.644C93.2254 99.5674 90.6002 101.678 87.7988 103.546H25.2012ZM33.3344 108.048C40.4035 111.23 48.245 113 56.5 113C64.755 113 72.5965 111.23 79.6656 108.048H33.3344ZM0.127541 60.3266C0.0429659 59.062 0 57.786 0 56.5C0 55.6703 0.017883 54.8448 0.0532847 54.0239H112.947C112.982 54.8448 113 55.6703 113 56.5C113 57.786 112.957 59.062 112.872 60.3266H0.127541ZM1.56969 43.2192C1.0736 45.2784 0.690286 47.3816 0.426667 49.5219H112.573C112.31 47.3816 111.926 45.2784 111.43 43.2192H1.56969ZM2.85532 38.7172C3.57155 36.5554 4.41479 34.4516 5.37621 32.4144H107.624C108.585 34.4516 109.428 36.5554 110.145 38.7172H2.85532ZM12.0569 21.6097C10.487 23.6066 9.0489 25.7119 7.75552 27.9125H105.244C103.951 25.7119 102.513 23.6066 100.943 21.6097H12.0569ZM15.9969 17.1077C18.2339 14.808 20.6651 12.6981 23.264 10.8046H89.736C92.3349 12.6981 94.7661 14.808 97.0031 17.1077H15.9969ZM56.5 0C65.8583 0 74.6852 2.2752 82.4576 6.30262H30.5424C38.3148 2.2752 47.1417 0 56.5 0Z" fill="#12FFF0" fill-opacity="0.2"/>
-          </svg>
-            
-        </div>
-      </div>
-     
 
-    </div>
-    
-      <div class="home-computer-container">
-        <img class="home-computer" src="https://i.postimg.cc/3J10tnd8/img1.png" class="home-img">
-        
-      </div>
+	<div class="flex flexCol" style="height: 100vh; width: 100%; position: fixed; top: 0; align-items: center; justify-content: center;">
 
-     
-    </section>
-   
-    
-  </main>
-  <div class="Mcontainer">
-    <div class="Mcard">
-      <div class="Mnumber"><img src="https://i.postimg.cc/8z8q7GkL/download1.png" ></div>
-      <div class="Mtitle">Assistant</div>
-     
-    </div>
-    <div class="Mcard">
-      <div class="Mnumber"><img src="https://i.postimg.cc/kGHDQ4YJ/download-2.png" ></div>
-      <div class="Mtitle">Entertainment </div>
-     
-    </div>
-    <div class="Mcard">
-      <div class="Mnumber"><img src="https://i.postimg.cc/mrrD57xL/download-3.png" ></div>
-      <div class="Mtitle">Games</div>
-     
-    </div>
-    <div class="Mcard">
-      <div class="Mnumber"><img src="https://i.postimg.cc/RFKzs00C/download-4.png" ></div>
-      <div class="Mtitle">Resources</div>
-     
-    </div>
-   
-  </div>
-  
-  <footer>
-    <div class="container top-footer">
-      <!-- footer item 1 -->
-      <div class="footer-item">
-        <h2 class="footer-title">ADDRESS</h2>
-        <div class="footer-items">
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing st18</h3>
-        </div>
-      </div>
-      <!-- footer item 2 -->
-      <div class="footer-item">
-        <h2 class="footer-title">SERVICES</h2>
-        <div class="footer-items">
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-        </div>
-      </div>
-      <!-- footer item 3 -->
-      <div class="footer-item">
-        <h2 class="footer-title">SUPPLIERS</h2>
-        <div class="footer-items">
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-        </div>
-      </div>
-      <!-- footer item 4 -->
-      <div class="footer-item">
-        <h2 class="footer-title">INVESTMENT</h2>
-        <div class="footer-items">
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-          <h3>Adipisicing elit.</h3>
-        </div>
-      </div>
-    </div>
-    <div class="container end-footer">
-      <div class="copyright">copyright © 2021 - Present • <b>DOWNTOWN TECH LIVER</b></div>
-      <a class="designer" href="#">Thierry M</a>
-    </div>
-  </footer>
-    <script src="/js/app.js"></script>
-   
+		<!-- PAGE CONTENT START ================================================================-->
+		<div class="flex flexCol" style="height: 100%; width: 100%; align-items: center; justify-content: center; gap: 20px;">
+
+			<div style="height: 150px; width: auto;">
+				<img style="height: 100%;" src="/assets/logo-text.svg">
+			</div>
+
+			<h1>Your Friend in Need</h1>
+
+			<button onclick="window.location.href='/chat'" style="color: #ECECEC; background: #3790D0;">
+				Continue
+			</button>
+
+		</div>
+		<!--================================================================== PAGE CONTENT END -->
+
+	</div>
+
 </body>
+
+</html>

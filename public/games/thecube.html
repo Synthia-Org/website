@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>The Cube - Games | Synthia</title>
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet">
+
+	<script src="/js/script.js" defer></script>
+
+	<!-- Preload CSS -->
+	<link rel="preload" href="/css/style.css" as="style" type="text/css">
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" type="text/css" crossorigin>
+	<!-- Preload JS -->
+	<link rel="preload" href="/js/script.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/menubar.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/navmenu.js" as="script" type="text/javascript">
+	<!-- Prefetch HTML -->
+	<link rel="prefetch" href="index.html" as="document">
+	<link rel="prefetch" href="chat.html" as="document">
+	<link rel="prefetch" href="entertainment.html" as="document">
+	<link rel="prefetch" href="games.html" as="document">
+	<link rel="prefetch" href="resources.html" as="document">
+	<link rel="prefetch" href="settings.html" as="document">
+	<link rel="prefetch" href="help.html" as="document">
+</head>
+
+<body>
+
+	<div class="flex flexCol"
+		style="height: 100vh; width: 100%; position: fixed; top: 0; align-items: center; justify-content: center;">
+
+		<!-- MENUBAR START =====================================================================-->
+		<div id="menubar"></div>
+		<script src="/js/menubar.js"></script>
+		<!--======================================================================= MENUBAR END -->
+
+
+		<!-- PAGE CONTENT START ================================================================-->
+		<div class="flex flexRow" style="height: calc(100% - 70px); width: 100%;">
+
+			<!-- NAVMENU START =================================================================-->
+			<div class="flex" id="navmenu"></div>
+			<script src="/js/navmenu.js"></script>
+			<!--=================================================================== NAVMENU END -->
+
+			<div class="flex flexCol pageContent">
+
+				<div class="flex containerBlock">
+					<div class="flex flexCol container" style="gap: 20px;">
+						<h1 class="gameTitle">
+							<a class="flex flexRow" href="/games" title="More Games">
+								<i class="fa-solid fa-chevron-left"></i>
+								The Cube
+							</a>
+						</h1>
+
+						<div class="iframe">
+							<iframe src="/games/TheCube/index.html" frameborder="0"></iframe>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<!--================================================================== PAGE CONTENT END -->
+
+	</div>
+
+</body>
+
+</html>

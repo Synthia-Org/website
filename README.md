@@ -1,4 +1,4 @@
-# website
+# SynthiaWeb
 Repo for the Chatbot Website
 
 <hr>

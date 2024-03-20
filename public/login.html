@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Login - Synthia</title>
+
+	<link rel="stylesheet" href="/css/account.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet">
+
+	<script src="/js/script.js" defer></script>
+	<script src="/js/account.js" defer></script>
+
+	<!-- Preload CSS -->
+	<link rel="preload" href="/css/account.css" as="style" type="text/css">
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" type="text/css" crossorigin>
+	<!-- Preload JS -->
+	<link rel="preload" href="/js/script.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/account.js" as="script" type="text/javascript">
+	<!-- Prefetch HTML -->
+	<link rel="prefetch" href="index.html" as="document">
+	<link rel="prefetch" href="chat.html" as="document">
+	<link rel="prefetch" href="entertainment.html" as="document">
+	<link rel="prefetch" href="games.html" as="document">
+	<link rel="prefetch" href="resources.html" as="document">
+	<link rel="prefetch" href="settings.html" as="document">
+	<link rel="prefetch" href="help.html" as="document">
+</head>
+
+<body>
+
+	<div class="flex flexCol" style="height: 100vh; width: 100%; position: fixed; top: 0; align-items: center; justify-content: center;">
+
+		<form class="flex flexCol loginRegisterForm" style="gap: 50px;" action="/userLogin" method="POST" id="loginForm">
+			<a href="/" style="height: 80px; width: fit-content; opacity: 1;">
+				<img src="/assets/logo-text.svg" alt="Synthia Logo" style="height: 100%; width: auto; object-fit: cover; object-position: center;">
+			</a>
+
+			<div class="flex flexCol" style="width: 100%; gap: 20px;">
+				<input type="text" id="loginEmail" name="email" placeholder="Email" title="Email" required>
+
+				<input type="password" id="loginPassword" name="password" placeholder="Password" title="Password" required>
+			</div>
+
+			<button type="submit">Login</button>
+
+			<span class="flex flexRow" style="font-weight: 300; gap: 10px;">
+				New User?
+				<a href="/register">Register</a>
+			</span>
+		</form>
+
+	</div>
+
+</body>
+
+</html>

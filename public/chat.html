@@ -4,29 +4,136 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Chat</title>
+
+	<title>Assistant | Synthia</title>
+
 	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet">
+
+	<script src="/js/script.js" defer></script>
 	<script src="/js/chat.js" defer></script>
+
+	<!-- Preload CSS -->
+	<link rel="preload" href="/css/style.css" as="style" type="text/css">
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" type="text/css" crossorigin>
+	<!-- Preload JS -->
+	<link rel="preload" href="/js/script.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/menubar.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/navmenu.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/chat.js" as="script" type="text/javascript">
+	<!-- Prefetch HTML -->
+	<link rel="prefetch" href="index.html" as="document">
+	<link rel="prefetch" href="chat.html" as="document">
+	<link rel="prefetch" href="entertainment.html" as="document">
+	<link rel="prefetch" href="games.html" as="document">
+	<link rel="prefetch" href="resources.html" as="document">
+	<link rel="prefetch" href="settings.html" as="document">
+	<link rel="prefetch" href="help.html" as="document">
+	<!-- Preload Images -->
+	<link rel="preload" href="/assets/logo-text.svg" as="image">
 </head>
 
 <body>
-	<h1>Welcome to Synthia Chat</h1>
-	<p>Try saying "hi"</p>
 
-	<div id="scrollContainer" style="height: 90%; width: 100%; overflow: auto; justify-content: center;">
-		<div style="height: auto; width: 90%; align-items: center; justify-content: start;">
+	<div class="flex flexCol" style="height: 100vh; width: 100%; position: fixed; top: 0; align-items: center; justify-content: center;">
 
-			<div id="responsesDiv"></div>
+		<!-- MENUBAR START =====================================================================-->
+		<div id="menubar"></div>
+		<script src="/js/menubar.js"></script>
+		<!--======================================================================= MENUBAR END -->
 
+
+		<!-- PAGE CONTENT START ================================================================-->
+		<div class="flex flexRow" style="height: calc(100% - 70px); width: 100%;">
+
+			<!-- NAVMENU START =================================================================-->
+			<div class="flex" id="navmenu"></div>
+			<script src="/js/navmenu.js"></script>
+			<!--=================================================================== NAVMENU END -->
+
+			<div class="flex flexCol" style="height: calc(100%); width: calc(100% - 350px);">
+				<div class="flex flexCol" style="height: calc(100% - 110px); width: 100%; align-items: center; justify-content: center;">
+					<div id="startMsg" class="flex flexCol" style="height: calc(100% - 180px); width: calc(100% - 350px); background: #242424; align-items: center; justify-content: center; gap: 60px; position: absolute; z-index: 5;">
+						<div class="flex flexCol" style="align-items: center;">
+							<h1 style="font-size: 18px; font-weight: 300;">This is</h1>
+							<img style="height: 90px;" src="/assets/logo-text.svg">
+						</div>
+						
+						<div class="flex flexCol" style="align-items: center; gap: 25px;">
+							<h1 style="font-size: 18px; font-weight: 300;">I can / will</h1>
+
+							<div style="width: 90%; display: flex; flex-direction: column; gap: 15px;">
+								<span style="display: flex; flex-direction: row; gap: 15px;">
+									<div style="width: calc(100% - 40px); height: auto; padding: 15px 20px; display: flex; justify-content: flex-start; align-items: center; background: var(--darkGray); border-radius: 8px;">
+										<span style=" display: flex; flex-direction: row; gap: 20px; align-items: center;">
+											<i class="fa-solid fa-circle-check" style="font-size: 24px;"></i>
+											Listen to you without any judgement
+										</span>
+									</div>
+
+									<div style="width: calc(100% - 40px); height: auto; padding: 15px 20px; display: flex; justify-content: flex-start; align-items: center; background: var(--darkGray); border-radius: 8px;">
+										<span style=" display: flex; flex-direction: row; gap: 20px; align-items: center;">
+											<i class="fa-solid fa-circle-check" style="font-size: 24px;"></i>
+											Offer personalized support and guidance for your issues
+										</span>
+									</div>
+								</span>
+
+								<span style="display: flex; flex-direction: row; gap: 15px;">
+									<div style="width: calc(100% - 40px); height: auto; padding: 15px 20px; display: flex; justify-content: flex-start; align-items: center; background: var(--darkGray); border-radius: 8px;">
+										<span style=" display: flex; flex-direction: row; gap: 20px; align-items: center;">
+											<i class="fa-solid fa-circle-check" style="font-size: 24px;"></i>
+											Provide social support
+										</span>
+									</div>
+
+									<div style="width: calc(100% - 40px); height: auto; padding: 15px 20px; display: flex; justify-content: flex-start; align-items: center; background: var(--darkGray); border-radius: 8px;">
+										<span style=" display: flex; flex-direction: row; gap: 20px; align-items: center;">
+											<i class="fa-solid fa-circle-check" style="font-size: 24px;"></i>
+											Track your mood and provide relevant treatments
+										</span>
+									</div>
+								</span>
+							</div>
+						</div>
+
+						<h1 style="font-size: 18px; font-weight: 300;">Don't worry! This is a safe space. You can tell me anything!</h1>
+
+					</div>
+
+					<div id="scrollContainer" class="flex" style="height: 90%; width: 100%; overflow: auto; justify-content: center;">
+						<div class="flex flexCol" style="height: auto; width: 90%; align-items: center; justify-content: start;">
+
+							<div id="responsesDiv" class="flex flexCol" style="height: auto; width: calc(100% - 20px); align-items: center; justify-content: center; gap: 15px;"></div>
+
+						</div>
+					</div>
+				</div>
+
+				<form id="chat-form" class="flex flexCol" style="height: 110px; width: 100%; align-items: center; justify-content: center; gap: 10px;">
+					<div class="flex flexRow" style="width: 60%; height: 40%;">
+						<input style="width: calc(100% - 32px); color: #B0B0B0; background: #424242; padding: 8px 12px; border: none; border-radius: 8px 0 0 8px; outline: none;" type="text" id="message-input" placeholder="Message Synthia..." autocomplete="off" spellcheck="false" title="">
+
+						<button class="flex" style="height: 100%; background: #424242; align-items: center; justify-content: center; padding: 8px 16px; border: none; border-radius: 0 8px 8px 0; outline: none; cursor: not-allowed;" type="submit" id="submitBtn">
+							<i class="fa-solid fa-paper-plane" id="submitIcon" style="color: var(--white);"></i>
+						</button>
+					</div>
+
+					<span style="width: 100%; display: flex; align-items: center; justify-content: center;">
+						<span style="background: #242424; width: 100%; position: absolute; z-index: 10; display: flex; align-items: center; justify-content: center;">
+							<span id="connectionMsg" style="font-size: 12px; font-weight: 400; text-transform: uppercase;"></span>
+						</span>
+					</span>
+				</form>
+			</div>
 		</div>
+		<!--================================================================== PAGE CONTENT END -->
+
 	</div>
 
-	<form id="chatForm">
-		<input type="text" id="messageInput" placeholder="Message Synthia..." autocomplete="off" spellcheck="false" title="">
-		<button type="submit" id="submitBtn">Send</button>
-	</form>
-
-	<script src="/js/script.js"></script>
 </body>
 
 </html>

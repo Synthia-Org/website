@@ -1,76 +1,111 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href='css/ent.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Entertainment | Synthia</title>
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet">
+
+	<script src="/js/script.js" defer></script>
+	<script src="/js/audioPlayer.js" defer></script>
+	<script src="/js/entertainment.js" defer></script>
+
+	<!-- Preload CSS -->
+	<link rel="preload" href="/css/style.css" as="style" type="text/css">
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" type="text/css" crossorigin>
+	<!-- Preload JS -->
+	<link rel="preload" href="/js/script.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/entertainment.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/menubar.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/navmenu.js" as="script" type="text/javascript">
+	<!-- Prefetch HTML -->
+	<link rel="prefetch" href="index.html" as="document">
+	<link rel="prefetch" href="chat.html" as="document">
+	<link rel="prefetch" href="entertainment.html" as="document">
+	<link rel="prefetch" href="games.html" as="document">
+	<link rel="prefetch" href="resources.html" as="document">
+	<link rel="prefetch" href="settings.html" as="document">
+	<link rel="prefetch" href="help.html" as="document">
 </head>
+
 <body>
 
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <img src="mental health.png" height=100 width=100>
-      <p>Recommended by Synthiya</p>
-      <p>Name</p>
-    </div>
-  </div>
+	<div class="flex flexCol" style="height: 100vh; width: 100%; position: fixed; top: 0; align-items: center; justify-content: center;">
 
-  <div class="column">
-    <div class="card">
-      <img src="mental health.png" height=100 width=100>
-      <p>Recommended by Synthiya</p>
-      <p>Name</p>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <img src="mental health.png" height=100 width=100>
-      <p>Recommended by Synthiya</p>
-      <p>Name</p>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <img src="mental health.png" height=100 width=100>
-      <p>Recommended by Synthiya</p>
-      <p>Name</p>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <img src="mental health.png" height=100 width=100>
-      <p>Recommended by Synthiya</p>
-      <p>Name</p>
-    </div>
-  </div>
-  
-   <div class="column">
-    <div class="card">
-      <img src="mental health.png" height=100 width=100>
-      <p>Recommended by Synthiya</p>
-      <p>Name</p>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <img src="mental health.png" height=100 width=100>
-      <p>Recommended by Synthiya</p>
-      <p>Name</p>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <img src="mental health.png" height=100 width=100>
-      <p>Recommended by Synthiya</p>
-      <p>Name</p>
-    </div>
-  </div>
-</div>
+		<!-- MENUBAR START =====================================================================-->
+		<div id="menubar"></div>
+		<script src="/js/menubar.js"></script>
+		<!--======================================================================= MENUBAR END -->
+
+
+		<!-- PAGE CONTENT START ================================================================-->
+		<div class="flex flexRow" style="height: calc(100% - 70px); width: 100%;">
+
+			<!-- NAVMENU START =================================================================-->
+			<div class="flex" id="navmenu"></div>
+			<script src="/js/navmenu.js"></script>
+			<!--=================================================================== NAVMENU END -->
+
+			<div class="flex flexCol pageContent" style="height: calc(100% - 100px);">
+				<div class="flex flex containerBlock">
+
+					<div class="flex flexCol container" style="padding-bottom: 30px;">
+						<div class="flex flexRow" style="height: auto; width: 100%; flex-wrap: wrap; gap: 30px;" id="entertainmentContainer"></div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="flex" style="height: 100px; width: calc(100% - 350px); background: #424242; position: fixed; bottom: 0; right: 0;" id="audioPlayerSection">
+				<div class="flex" style="width: 100%; height: 100%; align-items: center; justify-content: center;">
+
+					<div class="flex flexRow" style="height: calc(100% - 50px); width: calc(100% - 60px);">
+						<span class="flex flexRow" style="height: 100%; width: 100%; justify-content: space-between;">
+
+							<!-- audio player start -->
+							<audio id="audioPlayer" style="display: none;" preload="auto" src=""></audio>
+							<!-- audio player end -->
+
+							<div class="flex flexRow" style="height: 100%; align-items: center; gap: 20px;">
+								<div style="height: 100%; width: auto;">
+									<img id="audioPlayerImage" src="/assets/images/temp.png" alt="Album Art" style="height: 100%; width: auto; border-radius: 5px;" title="">
+								</div>
+
+								<span class="flex flexCol" style="gap: 2px;">
+									<span style="font-size: 14px; font-weight: 300;" id="audioPlayerState"></span>
+									<span style="font-size: 18px; font-weight: 500;" id="audioPlayerDetails"></span>
+								</span>
+							</div>
+
+							<div class="flex flexRow" style="height: 100%; margin-right: 10px; align-items: center; gap: 25px;">
+								<input type="range" min="0" max="100" value="100" class="slider" id="volumeSlider">
+
+								<span class="flex" style="align-items: center; cursor: pointer;" id="playerPlayPause">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#3790D0" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+										<path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="currentColor" />
+									</svg>
+								</span>
+							</div>
+
+						</span>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<!--================================================================== PAGE CONTENT END -->
+
+	</div>
 
 </body>
+
 </html>

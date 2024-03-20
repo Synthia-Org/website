@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700&display=swap');
+
+:root {
+	--white: #ECECEC;
+	--gray: #B0B0B0;
+	--darkGray: #333333;
+	--black: #242424;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+html {
+	scroll-behavior: smooth;
+	color: var(--white);
+	background: var(--black);
+	font-weight: 400;
+}
+
+a {
+	color: var(--gray);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	font-weight: 600;
+	opacity: 0.7;
+	transition: 0.2s;
+}
+a:hover {
+	opacity: 1;
+	transition: 0.2s;
+}
+
+button {
+	width: fit-content;
+	padding: 10px 18px;
+	color: var(--white);
+	background: #3790D0;
+	filter: brightness(100%);
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	transition: 0.3s;
+}
+button:hover {
+	filter: brightness(110%);
+	transition: 0.3s;
+}
+
+.flex {
+	display: flex;
+}
+.flexCol {
+	flex-direction: column;
+}
+.flexRow {
+	flex-direction: row;
+}
+
+
+
+.loginRegisterForm {
+	height: auto;
+	width: 400px;
+	background: #2C2C2C;
+	padding: 50px 30px;
+	border-radius: 5px;
+	align-items: center;
+}
+
+.loginRegisterForm input {
+	width: calc(100% - 30px);
+	padding: 12px 15px;
+	border-radius: 5px;
+	color: #B0B0B0;
+	background: #333333;
+	border: none;
+	outline: none;
+	transition: 0.3s;
+}
+.loginRegisterForm input:focus {
+	background: #424242;
+	transition: 0.3s;
+}

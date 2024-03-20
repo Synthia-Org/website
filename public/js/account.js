@@ -13,20 +13,18 @@ var confirmPasswordElement = document.getElementById('confirmPassword');
 const logoutBtn = document.getElementById('logoutBtn');
 
 
+// Fetch User Info Functionality
 function fetchUserInfo() {
 	return fetch('/api/loggedin-userinfo')
 	.then(response => response.json())
 	.then(data => {
 		var id = data.userid;
-		console.log('id: ' + id);
 
 		var name = data.name;
 		existingNameSpan.textContent = name;
-		console.log('name: ' + name);
 
 		var email = data.email;
 		existingEmailSpan.textContent = email;
-		console.log('email: ' + email);
 	})
 	.catch(error => {
 		console.error('Error:', error);
@@ -35,6 +33,7 @@ function fetchUserInfo() {
 fetchUserInfo();
 
 
+// Update User Name Functionality
 nameForm.addEventListener('submit', function(event) {
 	event.preventDefault();
 
@@ -65,6 +64,7 @@ nameForm.addEventListener('submit', function(event) {
 });
 
 
+// Update User Email Functionality
 emailForm.addEventListener('submit', function(event) {
 	event.preventDefault();
 
@@ -95,6 +95,7 @@ emailForm.addEventListener('submit', function(event) {
 });
 
 
+// Update User Password Functionality
 passwordForm.addEventListener('submit', function(event) {
 	event.preventDefault();
 
@@ -131,11 +132,10 @@ passwordForm.addEventListener('submit', function(event) {
 });
 
 
-// i want to send a request to the server to remove the cookies when the user clicks the logout button
+// Logout Functionality
 logoutBtn.addEventListener('click', () => {
 	fetch('/logout')
 	.then(response => {
-		console.log('Cookies Cleared');
 		window.location.href = '/login';
 	})
 	.catch(error => {

@@ -6,7 +6,17 @@ const app = express();
 const port = 3000;
 var favicon = require('serve-favicon');
 const sqlite3 = require('sqlite3').verbose();
+const nodemailer = require('nodemailer');
 
+
+// create reusable transporter object using the default SMTP transport
+let transporter = nodemailer.createTransport({
+	service: 'gmail', // use 'gmail' as an example, you can use other services
+	auth: {
+		user: 'teamsynthia@gmail.com', // your email
+		pass: 'kjih rrxd gdmw ycht' // your email password
+	}
+});
 
 // Cookie Configuration Start
 app.use(cookieParser());
@@ -217,6 +227,109 @@ app.post('/userRegister', (req, res) => {
 			`;
 
 			res.send(userRegisterHtml);
+
+			// after user is registered
+			let mailOptions = {
+				from: 'teamsynthia@gmail.com', // sender address
+				to: email, // list of receivers
+				subject: 'Welcome to Our Website', // Subject line
+				text: 'Thank you for registering ' + name.split(' ')[0] + '.', // plain text body
+				html: `
+					<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+					<html xmlns="http://www.w3.org/1999/xhtml">
+
+					<head>
+						<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+						<meta name="viewport" content="width=device-width, initial-scale=1" />
+					</head>
+
+					<body>
+						<style>
+							body {
+								font-family: Arial, sans-serif;
+								margin: 0;
+								padding: 0;
+								color: #333;
+							}
+
+							a {
+								color: #4CAF50;
+								text-decoration: none;
+							}
+							a:hover {
+								color: #3e8e41;
+							}
+
+							.container {
+								padding: 20px;
+								max-width: 600px;
+								margin: 0 auto;
+								border-radius: 5px;
+								background-color: #f2f2f2;
+							}
+
+							.header {
+								text-align: center;
+							}
+
+							.content {
+								padding: 20px;
+							}
+
+							.footer {
+								text-align: center;
+								padding: 10px;
+								background-color: #ddd;
+							}
+						</style>
+
+						<div class="container">
+							<div class="header">
+								<h1>Welcome to Synthia, ${name.split(' ')[0]}!</h1>
+							</div>
+
+							<div class="content">
+								<p>We're thrilled to have you join us on your journey to mental well-being. Here at Synthia, we understand that mental health is just as important as physical health.</p>
+								<p>That's why we offer a variety of resources and tools to help you manage stress, improve your mood, and build resilience. Explore what we have to offer:</p>
+								<ul>
+									<li>**AI Chatbot:** Feeling overwhelmed and need someone to talk to? Our friendly AI chatbot is available 24/7 to listen without judgment and offer support.</li>
+									<li>**Entertainment:** Take a break and unwind with our curated selection of music genres.</li>
+									<li>**Games:** Engage in fun and interactive games designed to reduce stress, improve focus, and promote positive thinking.</li>
+									<li>**Resources:** Find valuable information, articles, and exercises on a wide range of mental health topics.</li>
+								</ul>
+								<p>We're constantly adding new features and content, so be sure to check back often!</p>
+
+								<h2>Getting Started</h2>
+								<p>For a seamless experience, we recommend creating a profile. This allows you to personalize your experience, track your progress, and access exclusive features. You can create your profile by logging in to your account.</p>
+
+								<h2>Stay Connected</h2>
+								<p>Follow us on social media for daily inspiration and updates:</p>
+								<ul>
+									<li><a href="">Link 1</a></li>
+									<li><a href="">Link 2</a></li>
+								</ul>
+								<p>If you have any questions or suggestions, please don't hesitate to contact us at <a href="mailto:teamsynthia@gmail.com">teamsynthia@gmail.com</a>.</p>
+								<p>We're here to support you on your path to mental well-being.</p>
+								<p>Warmly,</p>
+								<p>Synthia Team</p>
+							</div>
+
+							<div class="footer">
+								<p>&copy; 2024 Synthia</p>
+							</div>
+						</div>
+					</body>
+
+					</html>				
+				` // html body
+			};
+			// send mail with defined transport object
+			transporter.sendMail(mailOptions, (error, info) => {
+				if (error) {
+					return console.log(error);
+				}
+				console.log('Message sent: %s', info.messageId);
+			});
 		});
 	} else {
 		console.error('Password and Confirm Password do not match');

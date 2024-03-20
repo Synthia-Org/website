@@ -42,7 +42,6 @@ function fetchUserInfo() {
 			};
 			// remove double quotes from name
 			name = name.replace(/"/g, '');
-			console.log(name);
 			firstLetter = name.charAt(0).toUpperCase();
 			var container = document.getElementById('menubar');
 			container.innerHTML = menubarHTML();

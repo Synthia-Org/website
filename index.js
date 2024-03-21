@@ -190,150 +190,167 @@ app.get('/settings', function(req, res) {
 
 // Register User Start
 app.post('/userRegister', (req, res) => {
-	const name = req.body.name;
-	const email = req.body.email;
-	const password = req.body.password;
-	const confirmPassword = req.body.confirmPassword;
-	const timestamp = new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear() + ' ' + new Date().toTimeString().slice(0, 5);
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    const confirmPassword = req.body.confirmPassword;
+    const timestamp = new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear() + ' ' + new Date().toTimeString().slice(0, 5);
 
-	if (password === confirmPassword) {
-		db.run('INSERT INTO users (name, email, password, timestamp) VALUES (?, ?, ?, ?)', [name, email, password, timestamp], (err) => {
-			if (err) {
-				console.error('Error Saving Data To Database:', err.message);
-				res.status(500).send('Error Saving Data To Database :(');
-				return;
-			}
+    if (password === confirmPassword) {
+        // Check if email already exists in the database
+        db.get('SELECT email FROM users WHERE email = ?', [email], (err, row) => {
+            if (err) {
+                console.error('Error querying database:', err.message);
+                res.status(500).send('Error querying database :(');
+                return;
+            }
 
-			console.log('Data Saved To Database :)');
+            if (row) {
+                // If the SELECT statement returned a row, the email already exists
+                console.error('Email already exists');
+                res.status(500).send(`<script>alert('Email already exists'); window.history.back();</script>`);
+                return;
+            }
 
-			// HTML To Display Thanks & Submitted Data To User
-			let userRegisterHtml = `
-				<html>
-					<head>
-						<title>Thank You</title>
-						<link rel="stylesheet" href="/css/style.css">
-					</head>
+            // If the SELECT statement didn't return a row, the email doesn't exist and we can insert the new user
+            db.run('INSERT INTO users (name, email, password, timestamp) VALUES (?, ?, ?, ?)', [name, email, password, timestamp], (err) => {
+                if (err) {
+                    console.error('Error Saving Data To Database:', err.message);
+                    res.status(500).send('Error Saving Data To Database :(');
+                    return;
+                }
 
-					<body>
-						<h1>Thank You!</h1>
-						<br>
-						<h1>Here Is Your Submitted Form Data:</h1>
-						<p>Name: ${name}</p>
-						<p>Email: ${email}</p>
-						<p>Password: ${password}</p>
-						<button onclick="window.location.href='/login'">Login</button>
-					</body>
-				</html>
-			`;
+                console.log('Data Saved To Database :)');
 
-			res.send(userRegisterHtml);
+                // HTML To Display Thanks & Submitted Data To User
+                let userRegisterHtml = `
+                    <html>
+                        <head>
+                            <title>Thank You</title>
+                            <link rel="stylesheet" href="/css/style.css">
+                        </head>
 
-			// after user is registered
-			let mailOptions = {
-				from: 'teamsynthia@gmail.com', // sender address
-				to: email, // list of receivers
-				subject: 'Welcome to Our Website', // Subject line
-				text: 'Thank you for registering ' + name.split(' ')[0] + '.', // plain text body
-				html: `
-					<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-					<html xmlns="http://www.w3.org/1999/xhtml">
+                        <body>
+                            <h1>Thank You!</h1>
+                            <br>
+                            <h1>Here Is Your Submitted Form Data:</h1>
+                            <p>Name: ${name}</p>
+                            <p>Email: ${email}</p>
+                            <p>Password: ${password}</p>
+                            <button onclick="window.location.href='/login'">Login</button>
+                        </body>
+                    </html>
+                `;
 
-					<head>
-						<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-						<meta name="viewport" content="width=device-width, initial-scale=1" />
-					</head>
+                res.send(userRegisterHtml);
 
-					<body>
-						<style>
-							body {
-								font-family: Arial, sans-serif;
-								margin: 0;
-								padding: 0;
-								color: #333;
-							}
+                // after user is registered
+                let mailOptions = {
+                    from: 'teamsynthia@gmail.com', // sender address
+                    to: email, // list of receivers
+                    subject: 'Welcome to Synthia', // Subject line
+                    text: 'Thank you for registering ' + name.split(' ')[0] + '.', // plain text body
+                    html: `
+                        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+                        <html xmlns="http://www.w3.org/1999/xhtml">
 
-							a {
-								color: #4CAF50;
-								text-decoration: none;
-							}
-							a:hover {
-								color: #3e8e41;
-							}
+                        <head>
+                            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                            <meta name="viewport" content="width=device-width, initial-scale=1" />
+                        </head>
 
-							.container {
-								padding: 20px;
-								max-width: 600px;
-								margin: 0 auto;
-								border-radius: 5px;
-								background-color: #f2f2f2;
-							}
+                        <body>
+                            <style>
+                                body {
+                                    font-family: Arial, sans-serif;
+                                    margin: 0;
+                                    padding: 0;
+                                    color: #333;
+                                }
 
-							.header {
-								text-align: center;
-							}
+                                a {
+                                    color: #4CAF50;
+                                    text-decoration: none;
+                                }
+                                a:hover {
+                                    color: #3e8e41;
+                                }
 
-							.content {
-								padding: 20px;
-							}
+                                .container {
+                                    padding: 20px;
+                                    max-width: 600px;
+                                    margin: 0 auto;
+                                    border-radius: 5px;
+                                    background-color: #f2f2f2;
+                                }
 
-							.footer {
-								text-align: center;
-								padding: 10px;
-								background-color: #ddd;
-							}
-						</style>
+                                .header {
+                                    text-align: center;
+                                }
 
-						<div class="container">
-							<div class="header">
-								<h1>Welcome to Synthia, ${name.split(' ')[0]}!</h1>
+                                .content {
+                                    padding: 20px;
+                                }
+
+                                .footer {
+                                    text-align: center;
+                                    padding: 10px;
+                                    background-color: #ddd;
+                                }
+                            </style>
+
+                            <div class="container">
+                                <div class="header">
+                                    <h1>Welcome to Synthia, ${name.split(' ')[0]}!</h1>
+</div>
+
+								<div class="content">
+									<p>We're thrilled to have you join us on your journey to mental well-being. Here at Synthia, we understand that mental health is just as important as physical health.</p>
+									<p>That's why we offer a variety of resources and tools to help you manage stress, improve your mood, and build resilience. Explore what we have to offer:</p>
+									<ul>
+										<li>**AI Chatbot:** Feeling overwhelmed and need someone to talk to? Our friendly AI chatbot is available 24/7 to listen without judgment and offer support.</li>
+										<li>**Entertainment:** Take a break and unwind with our curated selection of music genres.</li>
+										<li>**Games:** Engage in fun and interactive games designed to reduce stress, improve focus, and promote positive thinking.</li>
+										<li>**Resources:** Find valuable information, articles, and exercises on a wide range of mental health topics.</li>
+									</ul>
+									<p>We're constantly adding new features and content, so be sure to check back often!</p>
+
+									<h2>Getting Started</h2>
+									<p>For a seamless experience, we recommend creating a profile. This allows you to personalize your experience, track your progress, and access exclusive features. You can create your profile by logging in to your account.</p>
+
+									<h2>Stay Connected</h2>
+									<p>Follow us on social media for daily inspiration and updates:</p>
+									<ul>
+										<li><a href="">Link 1</a></li>
+										<li><a href="">Link 2</a></li>
+									</ul>
+									<p>If you have any questions or suggestions, please don't hesitate to contact us at <a href="mailto:teamsynthia@gmail.com">teamsynthia@gmail.com</a>.</p>
+									<p>We're here to support you on your path to mental well-being.</p>
+									<p>Warmly,</p>
+									<p>Synthia Team</p>
+								</div>
+
+								<div class="footer">
+									<p>&copy; 2024 Synthia</p>
+								</div>
 							</div>
+						</body>
 
-							<div class="content">
-								<p>We're thrilled to have you join us on your journey to mental well-being. Here at Synthia, we understand that mental health is just as important as physical health.</p>
-								<p>That's why we offer a variety of resources and tools to help you manage stress, improve your mood, and build resilience. Explore what we have to offer:</p>
-								<ul>
-									<li>**AI Chatbot:** Feeling overwhelmed and need someone to talk to? Our friendly AI chatbot is available 24/7 to listen without judgment and offer support.</li>
-									<li>**Entertainment:** Take a break and unwind with our curated selection of music genres.</li>
-									<li>**Games:** Engage in fun and interactive games designed to reduce stress, improve focus, and promote positive thinking.</li>
-									<li>**Resources:** Find valuable information, articles, and exercises on a wide range of mental health topics.</li>
-								</ul>
-								<p>We're constantly adding new features and content, so be sure to check back often!</p>
-
-								<h2>Getting Started</h2>
-								<p>For a seamless experience, we recommend creating a profile. This allows you to personalize your experience, track your progress, and access exclusive features. You can create your profile by logging in to your account.</p>
-
-								<h2>Stay Connected</h2>
-								<p>Follow us on social media for daily inspiration and updates:</p>
-								<ul>
-									<li><a href="">Link 1</a></li>
-									<li><a href="">Link 2</a></li>
-								</ul>
-								<p>If you have any questions or suggestions, please don't hesitate to contact us at <a href="mailto:teamsynthia@gmail.com">teamsynthia@gmail.com</a>.</p>
-								<p>We're here to support you on your path to mental well-being.</p>
-								<p>Warmly,</p>
-								<p>Synthia Team</p>
-							</div>
-
-							<div class="footer">
-								<p>&copy; 2024 Synthia</p>
-							</div>
-						</div>
-					</body>
-
-					</html>				
-				` // html body
-			};
-			// send mail with defined transport object
-			transporter.sendMail(mailOptions, (error, info) => {
-				if (error) {
-					return console.log(error);
-				}
-				console.log('Message sent: %s', info.messageId);
+						</html>
+					` // html body
+				};
+				// send mail with defined transport object
+				transporter.sendMail(mailOptions, (error, info) => {
+					if (error) {
+						return console.log(error);
+					}
+					console.log('Message sent: %s', info.messageId);
+				});
 			});
 		});
 	} else {
 		console.error('Password and Confirm Password do not match');
-		res.status(500).send('Password and Confirm Password do not match :(');
+		res.status(500).send(`<script>alert('Password and Confirm Password do not match'); window.history.back();</script>`);
 		return;
 	}
 });
@@ -376,11 +393,11 @@ app.post('/userLogin', (req, res) => {
 				res.redirect('/chat');
 			} else {
 				console.error('Invalid Password :(');
-				res.status(500).send(`<script>alert('Invalid Password :(');</script>`);
+				res.status(500).send(`<script>alert('Invalid Password :('); window.history.back();</script>`);
 			}
 		} else {
 			console.error('Invalid Email :(');
-			res.status(500).send(`<script>alert('Invalid Email :(');</script>`);
+			res.status(500).send(`<script>alert('Invalid Email :('); window.history.back();</script>`);
 		}
 	});
 });
@@ -449,6 +466,8 @@ app.post('/api/updateuseremail', (req, res) => {
 app.post('/api/updateuserpassword', (req, res) => {
 	const id = req.cookies.userid;
 	const newPassword = req.body.newPassword;
+	const name = req.cookies.name;
+	const email = req.cookies.email;
 
 	db.run('UPDATE users SET password = ? WHERE id = ?', [newPassword, id], (err) => {
 		if (err) {
@@ -456,6 +475,79 @@ app.post('/api/updateuserpassword', (req, res) => {
 			res.json({ success: false });
 		} else {
 			console.log('Password Updated Successfully\nNew Password: ' + newPassword);
+
+			// after password is updated
+			let mailOptions = {
+				from: 'teamsynthia@gmail.com', // sender address
+				to: email, // list of receivers
+				subject: 'Your Password Has Been Updated', // Subject line
+				text: 'Your password has been updated.', // plain text body
+				html: `
+					<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+					<html xmlns="http://www.w3.org/1999/xhtml">
+
+					<head>
+						<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+						<meta name="viewport" content="width=device-width, initial-scale=1" />
+					</head>
+
+					<body>
+						<style>
+							body {
+								font-family: Arial, sans-serif;
+								margin: 0;
+								padding: 0;
+								color: #333;
+							}
+
+							a {
+								color: #4CAF50;
+								text-decoration: none;
+							}
+							a:hover {
+								color: #3e8e41;
+							}
+
+							.container {
+								padding: 20px;
+								max-width: 600px;
+								margin: 0 auto;
+								border-radius: 5px;
+								background-color: #f2f2f2;
+							}
+
+							.content {
+								padding: 20px;
+							}
+						</style>
+
+						<div class="container">
+							<div class="content">
+
+								<p>Hi ${name.split(' ')[0]},</p>
+								<p>This email confirms that your password for your account on Synthia has been successfully updated.</p>
+								<p>**Important:** For your security, we cannot disclose your new password in this email. We recommend you choose a strong password that is unique to Synthia and not used for any other online accounts.</p>
+								<p>If you did not request this password update, please contact us immediately at <a href="mailto:teamsynthia@gmail.com">teamsynthia@gmail.com</a> to ensure the security of your account.</p>
+
+								<p>Thanks,</p>
+								<p>The Synthia Team</p>
+
+							</div>
+						</div>
+					</body>
+
+					</html>				
+				` // html body
+			};
+
+			// send mail with defined transport object
+			transporter.sendMail(mailOptions, (error, info) => {
+				if (error) {
+					return console.log(error);
+				}
+				console.log('Message sent: %s', info.messageId);
+			});
+
 			res.json({ success: true });
 		}
 	});

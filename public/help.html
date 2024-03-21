@@ -14,6 +14,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet">
 
 	<script src="/js/script.js" defer></script>
+	<script src="/js/feedbackForm.js" defer></script>
 
 	<!-- Preload CSS -->
 	<link rel="preload" href="/css/style.css" as="style" type="text/css">
@@ -22,6 +23,7 @@
 	<link rel="preload" href="/js/script.js" as="script" type="text/javascript">
 	<link rel="preload" href="/js/menubar.js" as="script" type="text/javascript">
 	<link rel="preload" href="/js/navmenu.js" as="script" type="text/javascript">
+	<link rel="preload" href="/js/feedbackForm.js" as="script" type="text/javascript">
 	<!-- Prefetch HTML -->
 	<link rel="prefetch" href="index.html" as="document">
 	<link rel="prefetch" href="chat.html" as="document">
@@ -30,6 +32,72 @@
 	<link rel="prefetch" href="resources.html" as="document">
 	<link rel="prefetch" href="settings.html" as="document">
 	<link rel="prefetch" href="help.html" as="document">
+
+	<style>
+		form {
+			height: auto;
+			padding: 30px 25px;
+			border-radius: 0 0 5px 5px;
+			background: #2C2C2C;
+			gap: 15px;
+		}
+
+		form input {
+			padding: 12px 15px;
+			border-radius: 5px;
+			color: var(--gray);
+			background: var(--darkGray);
+			border: none;
+			outline: none;
+			transition: 0.3s;
+		}
+
+		form input:focus {
+			background: #424242;
+			transition: 0.3s;
+		}
+
+		form select {
+			padding: 12px 15px;
+			border-radius: 5px;
+			color: var(--gray);
+			background: var(--darkGray);
+			border: none;
+			outline: none;
+			cursor: pointer;
+		}
+
+		form textarea {
+			height: 250px;
+			padding: 15px;
+			border-radius: 5px;
+			color: var(--gray);
+			background: var(--darkGray);
+			border: none;
+			outline: none;
+			resize: none;
+			transition: 0.3s;
+		}
+
+		form textarea:focus {
+			background: #424242;
+			transition: 0.3s;
+		}
+
+		form button {
+			background: var(--accent);
+			padding: 12px 22px;
+		}
+
+		#submitStateMsg{
+			color: var(--accent);
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: end;
+			gap: 10px;
+		}
+	</style>
 </head>
 
 <body>
@@ -53,9 +121,9 @@
 			<div class="flex flexCol pageContent">
 				<div class="flex containerBlock">
 
-					<div class="flex flexCol container" style="gap: 40px;">
+					<div class="flex flexCol container" style="padding-bottom: 40px; gap: 40px;">
 						<div class="flex flexCol" style="gap: 20px;">
-							<h1>Contact Us</h1>
+							<h1>Connect With Us</h1>
 
 							<div class="flex flexCol" style="gap: 15px;">
 								<a class="flex flexRow linkTile" href="mailto:teamsynthia@gmail.com" target="_blank">
@@ -81,13 +149,7 @@
 										<path d="M9 6l6 6l-6 6" />
 									</svg>
 								</a>
-							</div>
-						</div>
 
-						<div class="flex flexCol" style="gap: 20px;">
-							<h1>Follow Us</h1>
-
-							<div class="flex flexCol" style="gap: 15px;">
 								<a class="flex flexRow linkTile" href="https://github.com/Synthia-Org/website" target="_blank">
 									<span style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
 										<i class="fa-brands fa-github" style="font-size: 14px;"></i>
@@ -99,43 +161,41 @@
 										<path d="M9 6l6 6l-6 6" />
 									</svg>
 								</a>
-
-								<a class="flex flexRow linkTile" href="" target="_blank">
-									<span style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-										<i class="fa-solid fa-square" style="font-size: 14px;"></i>
-										Link 2
-									</span>
-
-									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#3790D0" fill="none" stroke-linecap="round" stroke-linejoin="round">
-										<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-										<path d="M9 6l6 6l-6 6" />
-									</svg>
-								</a>
-
-								<a class="flex flexRow linkTile" href="" target="_blank">
-									<span style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-										<i class="fa-solid fa-square" style="font-size: 14px;"></i>
-										Link 3
-									</span>
-
-									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#3790D0" fill="none" stroke-linecap="round" stroke-linejoin="round">
-										<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-										<path d="M9 6l6 6l-6 6" />
-									</svg>
-								</a>
-
-								<a class="flex flexRow linkTile" href="" target="_blank">
-									<span style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-										<i class="fa-solid fa-square" style="font-size: 14px;"></i>
-										Link 4
-									</span>
-
-									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#3790D0" fill="none" stroke-linecap="round" stroke-linejoin="round">
-										<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-										<path d="M9 6l6 6l-6 6" />
-									</svg>
-								</a>
 							</div>
+						</div>
+
+						<div class="flex flexCol" style="gap: 20px;">
+							<h1>Have a Problem or Feedback?</h1>
+
+							<form class="flex flexCol" style="border-radius: 5px; gap: 30px;" id="feedbackForm" action="https://script.google.com/macros/s/AKfycbwhS-lgjIp_gxYTKhOZf94H8Nj5ye-Tm6CtBlVOFzzJZTWiplvsukQ3GChaWpXGKEdp/exec" method="POST">
+								<div class="flex flexCol" style="gap: 15px;">
+									<label for="formType">Type:</label>
+									<select id="formType" name="Type">
+										<option value="Problem" name="Problem">Problem</option>
+										<option value="Feedback" name="Feedback">Feedback</option>
+									</select>
+								</div>
+
+								<div class="flex flexCol" style="gap: 15px;">
+									<label for="formEmail">Email:</label>
+									<input type="email" id="formEmail" name="Email" placeholder="Enter Email Address" required>
+								</div>
+
+								<div class="flex flexCol" style="gap: 15px;">
+									<label for="formSubject">Subject:</label>
+									<input type="text" id="formSubject" name="Subject" placeholder="Enter Subject" required>
+								</div>
+
+								<div class="flex flexCol" style="gap: 15px;">
+									<label for="formMessage">Message:</label>
+									<textarea id="formMessage" name="Message" placeholder="Enter Message" required></textarea>
+								</div>
+
+								<div class="flex flexRow" style="width: 100%; align-items: center; justify-content: space-between;">
+									<button type="submit">Submit</button>
+									<span id="submitStateMsg"></span>
+								</div>
+							</form>
 						</div>
 					</div>
 

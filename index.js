@@ -50,10 +50,18 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+	if (req.cookies.email) {
+		res.redirect('/chat');
+	} else {
+		res.sendFile(path.join(__dirname, 'public', 'login.html'));
+	}
 });
 app.get('/register', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'register.html'));
+	if (req.cookies.email) {
+		res.redirect('/chat');
+	} else {
+		res.sendFile(path.join(__dirname, 'public', 'register.html'));
+	}
 });
 
 app.get('/chat', function(req, res) {
@@ -190,128 +198,179 @@ app.get('/settings', function(req, res) {
 
 // Register User Start
 app.post('/userRegister', (req, res) => {
-    const name = req.body.name;
-    const email = req.body.email;
-    const password = req.body.password;
-    const confirmPassword = req.body.confirmPassword;
-    const timestamp = new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear() + ' ' + new Date().toTimeString().slice(0, 5);
+	const name = req.body.name;
+	const email = req.body.email;
+	const password = req.body.password;
+	const confirmPassword = req.body.confirmPassword;
+	const timestamp = new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear() + ' ' + new Date().toTimeString().slice(0, 5);
 
-    if (password === confirmPassword) {
-        // Check if email already exists in the database
-        db.get('SELECT email FROM users WHERE email = ?', [email], (err, row) => {
-            if (err) {
-                console.error('Error querying database:', err.message);
-                res.status(500).send('Error querying database :(');
-                return;
-            }
+	if (password === confirmPassword) {
+		// Check if email already exists in the database
+		db.get('SELECT email FROM users WHERE email = ?', [email], (err, row) => {
+			if (err) {
+				console.error('Error querying database:', err.message);
+				res.status(500).send('Error querying database :(');
+				return;
+			}
 
-            if (row) {
-                // If the SELECT statement returned a row, the email already exists
-                console.error('Email already exists');
-                res.status(500).send(`<script>alert('Email already exists'); window.history.back();</script>`);
-                return;
-            }
+			if (row) {
+				// If the SELECT statement returned a row, the email already exists
+				console.error('Email already exists');
+				res.status(500).send(`<script>alert('Email already exists'); window.history.back();</script>`);
+				return;
+			}
 
-            // If the SELECT statement didn't return a row, the email doesn't exist and we can insert the new user
-            db.run('INSERT INTO users (name, email, password, timestamp) VALUES (?, ?, ?, ?)', [name, email, password, timestamp], (err) => {
-                if (err) {
-                    console.error('Error Saving Data To Database:', err.message);
-                    res.status(500).send('Error Saving Data To Database :(');
-                    return;
-                }
+			// If the SELECT statement didn't return a row, the email doesn't exist and we can insert the new user
+			db.run('INSERT INTO users (name, email, password, timestamp) VALUES (?, ?, ?, ?)', [name, email, password, timestamp], (err) => {
+				if (err) {
+					console.error('Error Saving Data To Database:', err.message);
+					res.status(500).send('Error Saving Data To Database :(');
+					return;
+				}
 
-                console.log('Data Saved To Database :)');
+				console.log('Data Saved To Database :)');
 
-                // HTML To Display Thanks & Submitted Data To User
-                let userRegisterHtml = `
-                    <html>
-                        <head>
-                            <title>Thank You</title>
-                            <link rel="stylesheet" href="/css/style.css">
-                        </head>
+				// HTML To Display Thanks & Submitted Data To User
+				let userRegisterHtml = `
+					<!DOCTYPE html>
+					<html>
 
-                        <body>
-                            <h1>Thank You!</h1>
-                            <br>
-                            <h1>Here Is Your Submitted Form Data:</h1>
-                            <p>Name: ${name}</p>
-                            <p>Email: ${email}</p>
-                            <p>Password: ${password}</p>
-                            <button onclick="window.location.href='/login'">Login</button>
-                        </body>
-                    </html>
-                `;
+					<head>
+						<meta charset="UTF-8">
+						<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                res.send(userRegisterHtml);
+						<title>Welcome | Synthia</title>
 
-                // after user is registered
-                let mailOptions = {
-                    from: 'teamsynthia@gmail.com', // sender address
-                    to: email, // list of receivers
-                    subject: 'Welcome to Synthia', // Subject line
-                    text: 'Thank you for registering ' + name.split(' ')[0] + '.', // plain text body
-                    html: `
-                        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-                        <html xmlns="http://www.w3.org/1999/xhtml">
+						<link rel="stylesheet" href="/css/style.css">
+						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+						<link rel="preconnect" href="https://fonts.googleapis.com">
+						<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+						<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet">
 
-                        <head>
-                            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                            <meta name="viewport" content="width=device-width, initial-scale=1" />
-                        </head>
+						<script src="/js/script.js" defer></script>
 
-                        <body>
-                            <style>
-                                body {
-                                    font-family: Arial, sans-serif;
-                                    margin: 0;
-                                    padding: 0;
-                                    color: #333;
-                                }
+						<!-- Preload CSS -->
+						<link rel="preload" href="/css/style.css" as="style" type="text/css">
+						<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" type="text/css" crossorigin>
+						<!-- Preload JS -->
+						<link rel="preload" href="/js/script.js" as="script" type="text/javascript">
+						<link rel="preload" href="/js/menubar.js" as="script" type="text/javascript">
+						<link rel="preload" href="/js/navmenu.js" as="script" type="text/javascript">
+						<!-- Prefetch HTML -->
+						<link rel="prefetch" href="index.html" as="document">
+						<link rel="prefetch" href="chat.html" as="document">
+						<link rel="prefetch" href="entertainment.html" as="document">
+						<link rel="prefetch" href="games.html" as="document">
+						<link rel="prefetch" href="resources.html" as="document">
+						<link rel="prefetch" href="settings.html" as="document">
+						<link rel="prefetch" href="help.html" as="document">
+					</head>
 
-                                a {
-                                    color: #4CAF50;
-                                    text-decoration: none;
-                                }
-                                a:hover {
-                                    color: #3e8e41;
-                                }
+					<body>
 
-                                .container {
-                                    padding: 20px;
-                                    max-width: 600px;
-                                    margin: 0 auto;
-                                    border-radius: 5px;
-                                    background-color: #f2f2f2;
-                                }
+						<div class="flex flexCol" style="height: 100vh; width: 100%; position: fixed; top: 0; align-items: center; justify-content: center;">
 
-                                .header {
-                                    text-align: center;
-                                }
+							<!-- MENUBAR START =====================================================================-->
+							<div id="menubar"></div>
+							<script src="/js/menubar.js"></script>
+							<!--======================================================================= MENUBAR END -->
 
-                                .content {
-                                    padding: 20px;
-                                }
+							<!-- PAGE CONTENT START ================================================================-->
+							<div class="flex" style="height: calc(100% - 70px); width: 100%; align-items: center; justify-content: center;">
 
-                                .footer {
-                                    text-align: center;
-                                    padding: 10px;
-                                    background-color: #ddd;
-                                }
-                            </style>
+								<span class="flex flexCol" style="align-items: center; justify-content: center; gap: 50px;">
+									<div style="height: 300px; width: 700px;">
+										<img src="/assets/images/welcome.jpg" alt="Welcome" style="width: 100%; height: 100%; border-radius: 10px; object-fit: cover; object-position: center;">
+									</div>
 
-                            <div class="container">
-                                <div class="header">
-                                    <h1>Welcome to Synthia, ${name.split(' ')[0]}!</h1>
-</div>
+									<span class="flex flexCol" style="align-items: center; gap: 15px;">
+										<h1><span style="color: var(--accent);">Welcome</span> ${name.split(' ')[0]}!</h1>
+										<p>You're just one step away from accessing all the features of Synthia. Login to your account to get started.</p>
+									</span>
+
+									<button style="background: var(--accent);" onclick="window.location.href='/login'">Login Now</button>
+								</span>
+
+							</div>
+							<!--================================================================== PAGE CONTENT END -->
+
+						</div>
+
+					</body>
+
+					</html>
+				`;
+
+				res.send(userRegisterHtml);
+
+				// after user is registered
+				let mailOptions = {
+					from: 'teamsynthia@gmail.com', // sender address
+					to: email, // list of receivers
+					subject: 'Welcome to Synthia', // Subject line
+					text: 'Thank you for registering ' + name.split(' ')[0] + '.', // plain text body
+					html: `
+						<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+						<html xmlns="http://www.w3.org/1999/xhtml">
+
+						<head>
+							<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+							<meta name="viewport" content="width=device-width, initial-scale=1" />
+						</head>
+
+						<body>
+							<style>
+								body {
+									font-family: Arial, sans-serif;
+									margin: 0;
+									padding: 0;
+									color: #333;
+								}
+
+								a {
+									color: #4CAF50;
+									text-decoration: none;
+								}
+								a:hover {
+									color: #3e8e41;
+								}
+
+								.container {
+									padding: 20px;
+									max-width: 600px;
+									margin: 0 auto;
+									border-radius: 5px;
+									background-color: #f2f2f2;
+								}
+
+								.header {
+									text-align: center;
+								}
+
+								.content {
+									padding: 20px;
+								}
+
+								.footer {
+									text-align: center;
+									padding: 10px;
+									background-color: #ddd;
+								}
+							</style>
+
+							<div class="container">
+								<div class="header">
+									<h1>Welcome to Synthia, ${name.split(' ')[0]}!</h1>
+								</div>
 
 								<div class="content">
 									<p>We're thrilled to have you join us on your journey to mental well-being. Here at Synthia, we understand that mental health is just as important as physical health.</p>
 									<p>That's why we offer a variety of resources and tools to help you manage stress, improve your mood, and build resilience. Explore what we have to offer:</p>
 									<ul>
-										<li>**AI Chatbot:** Feeling overwhelmed and need someone to talk to? Our friendly AI chatbot is available 24/7 to listen without judgment and offer support.</li>
-										<li>**Entertainment:** Take a break and unwind with our curated selection of music genres.</li>
-										<li>**Games:** Engage in fun and interactive games designed to reduce stress, improve focus, and promote positive thinking.</li>
-										<li>**Resources:** Find valuable information, articles, and exercises on a wide range of mental health topics.</li>
+										<li><b>AI Chatbot:</b> Feeling overwhelmed and need someone to talk to? Our friendly AI chatbot is available 24/7 to listen without judgment and offer support.</li>
+										<li><b>Entertainment:</b> Take a break and unwind with our curated selection of music genres.</li>
+										<li><b>Games:</b> Engage in fun and interactive games designed to reduce stress, improve focus, and promote positive thinking.</li>
+										<li><b>Resources:</b> Find valuable information, articles, and exercises on a wide range of mental health topics.</li>
 									</ul>
 									<p>We're constantly adding new features and content, so be sure to check back often!</p>
 
